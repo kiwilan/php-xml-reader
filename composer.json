@@ -4,8 +4,7 @@
     "version": "0.1.10",
     "keywords": [
         "php",
-        "xml",
-        "reader"
+        "xml"
     ],
     "homepage": "https://github.com/kiwilan/php-xml-reader",
     "license": "MIT",
