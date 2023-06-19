@@ -3,7 +3,6 @@
     "description": "PHP package to read XML with nice API.",
     "version": "0.1.10",
     "keywords": [
-        "kiwilan",
         "php",
         "xml",
         "reader"
