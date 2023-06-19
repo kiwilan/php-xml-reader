@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss
+  xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+  xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:spotify="http://www.spotify.com/ns/rss"
+  xmlns:psc="http://podlove.org/simple-chapters/"
+  xmlns:media="https://search.yahoo.com/mrss/"
+  version="2.0">
+  <channel>
+    <title>2 Heures De Perdues</title>
+    <link>http://www.2hdp.fr/</link>
+    <atom:link rel="self" type="application/rss+xml" href="https://feed.ausha.co/Loa7srdWGm1b" />
+    <description>Petit podcast de rigolos pour les amateurs de cinéma. Pourquoi gagner du temps
+      quand on peut en perdre devant de mauvais films  </description>
+    <language>fr</language>
+    <copyright>℗ &amp; © 2019 Fréquence Moderne</copyright>
+    <lastBuildDate>Wed, 14 Jun 2023 08:40:14 +0000</lastBuildDate>
+    <pubDate>Wed, 14 Jun 2023 08:40:14 +0000</pubDate>
+    <webMaster>feeds@ausha.co (Ausha)</webMaster>
+    <generator>Ausha (https://www.ausha.co)</generator>
+    <spotify:countryOfOrigin>fr</spotify:countryOfOrigin>
+
+    <itunes:author>2 Heures de Perdues</itunes:author>
+    <itunes:owner>
+      <itunes:name>2 Heures de Perdues</itunes:name>
+      <itunes:email>2heuresdeperdues@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:summary>Petit podcast de rigolos pour les amateurs de cinéma. Pourquoi gagner du temps
+      quand on peut en perdre devant de mauvais films  </itunes:summary>
+    <itunes:explicit>yes</itunes:explicit>
+    <itunes:block>no</itunes:block>
+    <itunes:type>episodic</itunes:type>
+    <itunes:subtitle>Pourquoi gagner du temps quand on peut en perdre devant de mauvais films ?</itunes:subtitle>
+
+    <googleplay:author>2 Heures de Perdues</googleplay:author>
+    <googleplay:email>2heuresdeperdues@gmail.com</googleplay:email>
+    <googleplay:description>Petit podcast de rigolos pour les amateurs de cinéma. Pourquoi gagner du
+      temps quand on peut en perdre devant de mauvais films  </googleplay:description>
+    <googleplay:explicit>yes</googleplay:explicit>
+
+    <category>TV &amp; Film</category>
+
+    <itunes:category text="TV &amp; Film">
+      <itunes:category text="Film Reviews" />
+    </itunes:category>
+
+    <image>
+      <url>
+        https://image.ausha.co/XboDHYC69Oorw8MBObAkQ2sTPdxGTkexH3nYQ8Ky_1400x1400.jpeg?t=1619074925</url>
+      <title>2 Heures De Perdues</title>
+      <link>http://www.2hdp.fr/</link>
+    </image>
+    <itunes:image
+      href="https://image.ausha.co/XboDHYC69Oorw8MBObAkQ2sTPdxGTkexH3nYQ8Ky_1400x1400.jpeg?t=1619074925" />
+    <googleplay:image
+      href="https://image.ausha.co/XboDHYC69Oorw8MBObAkQ2sTPdxGTkexH3nYQ8Ky_1400x1400.jpeg?t=1619074925" />
+
+    <item>
+      <title>Peau d'Ane</title>
+      <guid isPermaLink="false">37f8d14cc5a63c903a810c7e7b52acff85c0d792</guid>
+      <description><![CDATA[<p>On discute du chef d'oeuvre de Jacques. Des réactions ? @2_HDP</p>]]></description>
+      <content:encoded><![CDATA[<p>On discute du chef d'oeuvre de Jacques. Des réactions ? @2_HDP</p>]]></content:encoded>
+      <pubDate>Wed, 14 Jun 2023 08:39:25 +0000</pubDate>
+      <enclosure
+        url="https://chtbl.com/track/47E579/https://audio.ausha.co/B4mpWfDq5KDa.mp3?t=1685693288"
+        length="56898528" type="audio/mpeg" />
+      <link>https://podcast.ausha.co/2-heures-de-perdues/peau-d-ane</link>
+
+      <itunes:author>2 Heures de Perdues</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:keywords></itunes:keywords>
+      <itunes:duration>59:12</itunes:duration>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>9</itunes:season>
+      <itunes:episode>34</itunes:episode>
+      <itunes:subtitle>On discute du chef d'oeuvre de Jacques. Des réactions ? @2_HDP</itunes:subtitle>
+
+      <googleplay:author>2 Heures de Perdues</googleplay:author>
+      <googleplay:explicit>no</googleplay:explicit>
+
+      <itunes:image
+        href="https://image.ausha.co/XboDHYC69Oorw8MBObAkQ2sTPdxGTkexH3nYQ8Ky_1400x1400.jpeg?t=1619074925" />
+      <googleplay:image
+        href="https://image.ausha.co/XboDHYC69Oorw8MBObAkQ2sTPdxGTkexH3nYQ8Ky_1400x1400.jpeg?t=1619074925" />
+
+      <psc:chapters version="1.1">
+      </psc:chapters>
+
+    </item>
+    <item>
+      <title>Les Dents de la Mer</title>
+      <guid isPermaLink="false">1b63f6b94e08064412a612bb966b752b139c5bcc</guid>
+      <description><![CDATA[<p>On discute du chef d'oeuvre de Steven. Des réactions ? @2_HDP</p>]]></description>
+      <content:encoded><![CDATA[<p>On discute du chef d'oeuvre de Steven. Des réactions ? @2_HDP</p>]]></content:encoded>
+      <pubDate>Wed, 07 Jun 2023 14:19:12 +0000</pubDate>
+      <enclosure
+        url="https://chtbl.com/track/47E579/https://audio.ausha.co/bWKZWTDW75RR.mp3?t=1685692067"
+        length="73226104" type="audio/mpeg" />
+      <link>https://podcast.ausha.co/2-heures-de-perdues/les-dents-de-la-mer</link>
+
+      <itunes:author>2 Heures de Perdues</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:keywords></itunes:keywords>
+      <itunes:duration>1:16:11</itunes:duration>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>9</itunes:season>
+      <itunes:episode>33</itunes:episode>
+      <itunes:subtitle>On discute du chef d'oeuvre de Steven. Des réactions ? @2_HDP</itunes:subtitle>
+
+      <googleplay:author>2 Heures de Perdues</googleplay:author>
+      <googleplay:explicit>no</googleplay:explicit>
+
+      <itunes:image
+        href="https://image.ausha.co/XboDHYC69Oorw8MBObAkQ2sTPdxGTkexH3nYQ8Ky_1400x1400.jpeg?t=1619074925" />
+      <googleplay:image
+        href="https://image.ausha.co/XboDHYC69Oorw8MBObAkQ2sTPdxGTkexH3nYQ8Ky_1400x1400.jpeg?t=1619074925" />
+
+      <psc:chapters version="1.1">
+      </psc:chapters>
+
+    </item>
+    <item>
+      <title>Gatsby le Magnifique</title>
+      <guid isPermaLink="false">fd44684f28239d7775e3d0d0074e39813d6568ca</guid>
+      <description><![CDATA[<p>On discute du chef d'oeuvre de Baz avec Culture 2000. Des réactions ? @2_HDP</p>]]></description>
+      <content:encoded><![CDATA[<p>On discute du chef d'oeuvre de Baz avec Culture 2000. Des réactions ? @2_HDP</p>]]></content:encoded>
+      <pubDate>Wed, 31 May 2023 11:37:13 +0000</pubDate>
+      <enclosure
+        url="https://chtbl.com/track/47E579/https://audio.ausha.co/BqE60CddKK3G.mp3?t=1685479410"
+        length="97468154" type="audio/mpeg" />
+      <link>https://podcast.ausha.co/2-heures-de-perdues/gatsby-le-magnifique</link>
+
+      <itunes:author>2 Heures de Perdues</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:keywords></itunes:keywords>
+      <itunes:duration>1:41:25</itunes:duration>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>9</itunes:season>
+      <itunes:episode>32</itunes:episode>
+      <itunes:subtitle>On discute du chef d'oeuvre de Baz avec Culture 2000. Des réactions ? @2_HDP</itunes:subtitle>
+
+      <googleplay:author>2 Heures de Perdues</googleplay:author>
+      <googleplay:explicit>no</googleplay:explicit>
+
+      <itunes:image
+        href="https://image.ausha.co/XboDHYC69Oorw8MBObAkQ2sTPdxGTkexH3nYQ8Ky_1400x1400.jpeg?t=1619074925" />
+      <googleplay:image
+        href="https://image.ausha.co/XboDHYC69Oorw8MBObAkQ2sTPdxGTkexH3nYQ8Ky_1400x1400.jpeg?t=1619074925" />
+
+      <psc:chapters version="1.1">
+      </psc:chapters>
+
+    </item>
+  </channel>
+</rss>

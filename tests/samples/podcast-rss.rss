@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+      xmlns:atom="http://www.w3.org/2005/Atom">
+      <channel>
+            <atom:link
+                  href="https://feeds.soundcloud.com/users/soundcloud:users:274829367/sounds.rss"
+                  rel="self" type="application/rss+xml" />
+            <atom:link
+                  href="https://feeds.soundcloud.com/users/soundcloud:users:274829367/sounds.rss?before=297773340"
+                  rel="next" type="application/rss+xml" />
+            <title>Le Cosy Corner</title>
+            <link>https://discord.gg/gqFwkMV</link>
+            <pubDate>Mon, 29 May 2023 17:12:01 +0000</pubDate>
+            <lastBuildDate>Mon, 29 May 2023 17:12:01 +0000</lastBuildDate>
+            <ttl>60</ttl>
+            <language>fr</language>
+            <copyright>All rights reserved</copyright>
+            <webMaster>feeds@soundcloud.com (SoundCloud Feeds)</webMaster>
+            <description>Le podcast de tous les p'tits cosys, par Medoc et Moguri.
+                  On y cause de pop-culture de manière fortement aléatoire, mais toujours détendue.</description>
+            <itunes:subtitle>Le podcast de tous les p'tits cosys, par Medoc et…</itunes:subtitle>
+            <itunes:owner>
+                  <itunes:name>Le Cosy Corner</itunes:name>
+                  <itunes:email>lecosycorner@gmail.com</itunes:email>
+            </itunes:owner>
+            <itunes:author>Le Cosy Corner</itunes:author>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:image href="https://i1.sndcdn.com/avatars-DVZc6CAqLFvwi4OZ-ip18QA-original.jpg" />
+            <image>
+                  <url>https://i1.sndcdn.com/avatars-DVZc6CAqLFvwi4OZ-ip18QA-original.jpg</url>
+                  <title>Le Cosy Corner</title>
+                  <link>https://discord.gg/gqFwkMV</link>
+            </image>
+            <itunes:category text="Leisure" />
+            <item>
+                  <guid isPermaLink="false">tag:soundcloud,2010:tracks/1525284973</guid>
+                  <title>#123 - Viva l'Algérie</title>
+                  <pubDate>Tue, 30 May 2023 21:59:08 +0000</pubDate>
+                  <link>https://soundcloud.com/lecosycorner/123-viva-lalgerie</link>
+                  <itunes:duration>02:29:57</itunes:duration>
+                  <itunes:author>Le Cosy Corner</itunes:author>
+                  <itunes:explicit>no</itunes:explicit>
+                  <itunes:summary>Où il est entre autres question de :
+                        [00:00:00] Festivals et retours en taxi polyglottes
+                        [00:28:39] Prise de poste et perte d'identité
+                        [00:50:50] Papy gaming : les petits trips nostalgeeks
+                        [01:17:00] The Legend of Zelda : Tears of the Kingdom, et la quête
+                        dangereuse de la complexité
+                        [01:50:37] Moons of Darsalon
+                        [02:01:14] Les Oiseaux du Temps
+
+                        La Page Patreon du Cosy Corner : https://www.patreon.com/lecosycorner
+
+                        -- Playlist --
+
+                        - Rachid Taha - Ya Rayah
+                        - Hiroshi Okubo - Party's Over (Ridge Racer Type 4 OST)
+                        - The Animals - Don't Let Me Be Misunderstood
+                        - The Ting Tings - That's Not My Name
+                        - Tokuhiko Uwabo, Takayuki Nakamura - Clotho (Columns 2 OST)
+                        - Avril Lavigne - Complicated
+                        - Yasuaki Iwata - Kass' Theme (OST The Legend of Zelda Breath of the Wild)
+                        - 113 - Tonton du Bled
+                        - ALB - I Just Don't Know What To Do With My Thanks (Cosy Corner 123 Special
+                        Thanks)</itunes:summary>
+                  <itunes:subtitle>Où il est entre autres question de :
+                        [00:00:00]…</itunes:subtitle>
+                  <description>Où il est entre autres question de :
+                        [00:00:00] Festivals et retours en taxi polyglottes
+                        [00:28:39] Prise de poste et perte d'identité
+                        [00:50:50] Papy gaming : les petits trips nostalgeeks
+                        [01:17:00] The Legend of Zelda : Tears of the Kingdom, et la quête
+                        dangereuse de la complexité
+                        [01:50:37] Moons of Darsalon
+                        [02:01:14] Les Oiseaux du Temps
+
+                        La Page Patreon du Cosy Corner : https://www.patreon.com/lecosycorner
+
+                        -- Playlist --
+
+                        - Rachid Taha - Ya Rayah
+                        - Hiroshi Okubo - Party's Over (Ridge Racer Type 4 OST)
+                        - The Animals - Don't Let Me Be Misunderstood
+                        - The Ting Tings - That's Not My Name
+                        - Tokuhiko Uwabo, Takayuki Nakamura - Clotho (Columns 2 OST)
+                        - Avril Lavigne - Complicated
+                        - Yasuaki Iwata - Kass' Theme (OST The Legend of Zelda Breath of the Wild)
+                        - 113 - Tonton du Bled
+                        - ALB - I Just Don't Know What To Do With My Thanks (Cosy Corner 123 Special
+                        Thanks)</description>
+                  <enclosure type="audio/mpeg"
+                        url="https://feeds.soundcloud.com/stream/1525284973-lecosycorner-123-viva-lalgerie.mp3"
+                        length="216121811" />
+                  <itunes:image
+                        href="https://i1.sndcdn.com/artworks-B4bvx3x1QDPHkBRe-OfupMg-t3000x3000.jpg" />
+            </item>
+            <item>
+                  <guid isPermaLink="false">tag:soundcloud,2010:tracks/1515700018</guid>
+                  <title>#122 - Du poulet</title>
+                  <pubDate>Tue, 16 May 2023 23:50:04 +0000</pubDate>
+                  <link>https://soundcloud.com/lecosycorner/122-du-poulet</link>
+                  <itunes:duration>02:39:31</itunes:duration>
+                  <itunes:author>Le Cosy Corner</itunes:author>
+                  <itunes:explicit>no</itunes:explicit>
+                  <itunes:summary>Où il est entre autres question de :
+                        [00:00:00] ADN et cliché naissant
+                        [00:20:40] Rédemption de l'avent
+                        [00:42:58] Trails in the Sky
+                        [01:23:44] : Les Mills, le sport et la famille
+                        [01:52:22] : Frontier, par Guillaume Singelin
+                        [02:10:56] : The Rover
+                        [02:36:10] : Remerciements
+
+                        La page Patreon du Cosy Corner : https://www.patreon.com/lecosycorner
+
+                        -- Playlist --
+
+                        - The Jungle Giants - She's a Riot
+                        - Daria Ze Śląska - Kill Bill
+                        - Tony Joe White - Homemade Ice Cream
+                        - Sufjan Stevens - Too Much
+                        - Ty Parr - National Aerobic Championship Theme
+                        - L.A.B - Natural
+                        - ALB - Capitaine Thanks [si t'as la ref] (Cosy Corner 122 Special Thanks)</itunes:summary>
+                  <itunes:subtitle>Où il est entre autres question de :
+                        [00:00:00] …</itunes:subtitle>
+                  <description>Où il est entre autres question de :
+                        [00:00:00] ADN et cliché naissant
+                        [00:20:40] Rédemption de l'avent
+                        [00:42:58] Trails in the Sky
+                        [01:23:44] : Les Mills, le sport et la famille
+                        [01:52:22] : Frontier, par Guillaume Singelin
+                        [02:10:56] : The Rover
+                        [02:36:10] : Remerciements
+
+                        La page Patreon du Cosy Corner : https://www.patreon.com/lecosycorner
+
+                        -- Playlist --
+
+                        - The Jungle Giants - She's a Riot
+                        - Daria Ze Śląska - Kill Bill
+                        - Tony Joe White - Homemade Ice Cream
+                        - Sufjan Stevens - Too Much
+                        - Ty Parr - National Aerobic Championship Theme
+                        - L.A.B - Natural
+                        - ALB - Capitaine Thanks [si t'as la ref] (Cosy Corner 122 Special Thanks)</description>
+                  <enclosure type="audio/mpeg"
+                        url="https://feeds.soundcloud.com/stream/1515700018-lecosycorner-122-du-poulet.mp3"
+                        length="229888122" />
+                  <itunes:image
+                        href="https://i1.sndcdn.com/artworks-B4bvx3x1QDPHkBRe-OfupMg-t3000x3000.jpg" />
+            </item>
+      </channel>
+</rss>

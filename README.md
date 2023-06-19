@@ -9,7 +9,7 @@
 [![tests][tests-src]][tests-href]
 [![codecov][codecov-src]][codecov-href]
 
-PHP package to read XML with nice API, heavily inspired by [`Adrien aka Gaarf solution`](https://stackoverflow.com/questions/6578832/how-to-convert-xml-into-array-in-php/30234924#30234924).
+PHP package to read XML with nice API, heavily inspired by [`stackoverflow answer`](https://stackoverflow.com/a/46349713/11008206).
 
 ## About
 
