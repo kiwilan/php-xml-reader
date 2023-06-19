@@ -67,16 +67,17 @@ it('can fail xml error', function () {
 });
 
 it('can read path or content', function () {
-    expect(fn () => XmlReader::make(file_get_contents(OPF)))
-        ->not()
-        ->toThrow(Exception::class, 'File `not-exist` not found');
+    $xml = XmlReader::make(file_get_contents(OPF));
+    expect($xml->content())->toBeArray();
 
-    expect(fn () => XmlReader::make(OPF))
-        ->not()
-        ->toThrow(Exception::class, 'File `not-exist` not found');
+    $xml = XmlReader::make(OPF);
+    expect($xml->content())->toBeArray();
 });
 
 it('can fail if not exists', function () {
     expect(fn () => XmlReader::make('not-exist'))
-        ->toThrow(Exception::class, 'File `not-exist` not found');
+        ->toThrow(Exception::class);
+
+    expect(fn () => XmlReader::make('./not-exist.xml'))
+        ->toThrow(Exception::class);
 });

@@ -18,6 +18,7 @@ class XmlReader
         protected string $xml,
         protected ?string $path = null,
         protected ?string $filename = null,
+        protected bool $validXml = false,
     ) {
     }
 
@@ -31,7 +32,7 @@ class XmlReader
     {
         $path = null;
         $basename = null;
-        if (strpos($xml, "\0") === false) {
+        if (is_file($xml)) {
             if (! file_exists($xml)) {
                 throw new Exception("File `{$xml}` not found");
             }
@@ -40,7 +41,20 @@ class XmlReader
             $xml = file_get_contents($xml);
         }
 
-        $self = new self($xml, $path, $basename);
+        $validXml = false;
+        try {
+            if (simplexml_load_string($xml)) {
+                $validXml = true;
+            }
+        } catch (\Throwable $th) {
+            if ($failOnError) {
+                throw new Exception('XML is not valid', 1, $th);
+            }
+
+            error_log($th->getMessage()."\n".$th->getTraceAsString());
+        }
+
+        $self = new self($xml, $path, $basename, $validXml);
 
         try {
             $self->content = XmlConverter::make($xml);
