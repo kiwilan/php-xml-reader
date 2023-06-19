@@ -20,6 +20,7 @@
     "require-dev": {
         "pestphp/pest": "^1.20",
         "laravel/pint": "^1.2",
+        "phpstan/phpstan": "^1.10",
         "spatie/ray": "^1.28"
     },
     "autoload": {
@@ -34,7 +35,11 @@
     },
     "scripts": {
         "test": "vendor/bin/pest",
-        "test-coverage": "vendor/bin/pest --coverage",
+        "test-filter": "vendor/bin/pest --filter",
+        "test-parallel": "vendor/bin/pest --parallel",
+        "test-coverage": "vendor/bin/pest --coverage --min=90",
+        "test-coverage-parallel": "vendor/bin/pest --parallel --coverage",
+        "analyse": "vendor/bin/phpstan analyse",
         "format": "vendor/bin/pint"
     },
     "config": {
