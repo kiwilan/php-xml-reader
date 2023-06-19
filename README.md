@@ -29,7 +29,23 @@ composer require kiwilan/php-xml-reader
 
 ## Usage
 
-// TODO
+You can use path or content to read XML file.
+
+```php
+use KiwiLan\XmlReader\XmlReader;
+
+$reader = XmlReader::make('path/to/file.xml');
+
+$array = $xml->content(); // XML as multidimensional array
+
+$key = $xml->search('key'); // Search key will return first key that contain `key` (safe)
+$strictKey = $xml->search('strictKey', strict: true); // Search key will return first key that is `strictKey` (safe)
+$valueKey = $xml->search('valueKey', value: true); // Search key will return first key that contain `valueKey` and return `_value` (safe)
+$attributableKey = $xml->search('attributableKey', attributes: true); // Search key will return first key that contain `attributableKey` and return `_attributes` (safe)
+
+$rootKey = $xml->extract('rootKey'); // Extract `rootKey` key, if not found return null (safe)
+$subSubKey = $xml->extract(['rootKey', 'subKey', 'subSubKey']); // Extract `rootKey` and `subKey` and `subSubKey` keys (safe)
+```
 
 ## Testing
 
@@ -53,7 +69,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 [version-src]: https://img.shields.io/packagist/v/kiwilan/php-xml-reader.svg?style=flat-square&colorA=18181B&colorB=777BB4
 [version-href]: https://packagist.org/packages/kiwilan/php-xml-reader
-[php-version-src]: https://img.shields.io/static/v1?style=flat-square&label=PHP&message=v8.1&color=777BB4&logo=php&logoColor=ffffff&labelColor=18181b
+[php-version-src]: https://img.shields.io/static/v1?style=flat-square&label=PHP&message=v8.0&color=777BB4&logo=php&logoColor=ffffff&labelColor=18181b
 [php-version-href]: https://www.php.net/
 [downloads-src]: https://img.shields.io/packagist/dt/kiwilan/php-xml-reader.svg?style=flat-square&colorA=18181B&colorB=777BB4
 [downloads-href]: https://packagist.org/packages/kiwilan/php-xml-reader

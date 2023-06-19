@@ -1,11 +1,11 @@
 <?php
 
-namespace Kiwilan\XmlReader\Converters;
+namespace Kiwilan\XmlReader;
 
 use DOMDocument;
 use DOMElement;
 
-class XmlArray
+class XmlConverter
 {
     /**
      * @return array<string, mixed>
@@ -42,7 +42,7 @@ class XmlArray
     /**
      * @return array<string, mixed>
      */
-    private function domToArray(DOMDocument|DOMElement $root): array
+    private function domToArray(DOMDocument|DOMElement $root): array|string
     {
         $output = [];
 
@@ -74,7 +74,12 @@ class XmlArray
         if ($children->length == 1) {
             $child = $children->item(0);
             if (in_array($child->nodeType, [XML_TEXT_NODE, XML_CDATA_SECTION_NODE])) {
-                $output['_value'] = $child->nodeValue;
+                // if (empty($output)) {
+                //     $output = trim($child->nodeValue);
+
+                //     return $output;
+                // }
+                $output['_value'] = trim($child->nodeValue);
 
                 return count($output) == 1
                     ? $output['_value']

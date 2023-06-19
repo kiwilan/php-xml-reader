@@ -1,9 +1,12 @@
 {
     "name": "kiwilan/php-xml-reader",
     "description": "PHP package to read XML with nice API.",
+    "version": "0.1.0",
     "keywords": [
         "kiwilan",
-        "php-xml-reader"
+        "php",
+        "xml",
+        "reader"
     ],
     "homepage": "https://github.com/kiwilan/php-xml-reader",
     "license": "MIT",

@@ -3,10 +3,6 @@
 namespace Kiwilan\XmlReader;
 
 use Exception;
-use Kiwilan\XmlReader\Converters\GaarfXml;
-use Kiwilan\XmlReader\Converters\XmlArray;
-use RecursiveArrayIterator;
-use RecursiveIteratorIterator;
 
 /**
  * Convert XML string.
@@ -20,32 +16,34 @@ class XmlReader
 
     protected function __construct(
         protected string $xml,
+        protected ?string $path = null,
+        protected ?string $filename = null,
     ) {
     }
 
     /**
      * @param  string  $xml XML string or path to XML file
-     * @param  bool  $failOnError Throw exception if XML is invalid
-     * @param  string  $type Type of parser `original` or `gaarf`
+     * @param  bool  $failOnError Throw exception if XML is invalid. Default: `true`.
      *
      * @throws Exception
      */
-    public static function make(string $xml, bool $failOnError = true, string $type = 'original'): self
+    public static function make(string $xml, bool $failOnError = true): self
     {
+        $path = null;
+        $basename = null;
         if (strpos($xml, "\0") === false) {
             if (! file_exists($xml)) {
                 throw new Exception("File `{$xml}` not found");
             }
+            $path = $xml;
+            $basename = basename($xml);
             $xml = file_get_contents($xml);
         }
 
-        $self = new self($xml);
+        $self = new self($xml, $path, $basename);
 
         try {
-            $self->content = match ($type) {
-                'original' => XmlArray::make($xml),
-                'gaarf' => GaarfXml::make($xml),
-            };
+            $self->content = XmlConverter::make($xml);
         } catch (\Throwable $th) {
             if ($failOnError) {
                 throw new Exception('Error while parsing XML', 1, $th);
@@ -57,43 +55,50 @@ class XmlReader
         return $self;
     }
 
-    public function search(string $key, bool $strict = false, bool $value = false)
+    /**
+     * Safely extract value from XML.
+     *
+     * @param  string[]|string  $keys  Keys to extract
+     */
+    public function extract(array|string $keys): mixed
     {
-        // foreach ($this->content as $key => $val) {
-        //     if ($val['uid'] === $id) {
-        //         return $key;
-        //     }
-        // }
+        if (is_string($keys)) {
+            $keys = [$keys];
+        }
 
-        $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($this->content));
+        $data = $this->content;
+        $res = null;
+        foreach ($keys as $k => $key) {
+            if (array_key_exists($key, $data)) {
+                $data = $data[$key];
+                $res = $data;
+            } else {
+                return null;
+            }
+        }
 
-        // foreach ($iterator as $iKey => $iVal) {
-        //     if ($key === $iKey) {
-        //         ray($iKey, $iVal);
-        //     }
+        return $res;
+    }
 
-        // $subArray = $value->getSubIterator();
-        // if ($subArray['name'] === 'cat 1') {
-        //     $outputArray[] = iterator_to_array($subArray);
-        // }
-        // }
-
-        // $result = array_filter($this->content, function () use ($key) {
-        //     $found = false;
-        //     array_walk_recursive($key, function ($item, $key) use (&$found) {
-        //         $found = $found || $key == 'name' && $item == 'cat 1';
-        //     });
-
-        //     return $found;
-        // });
-        // $result = $this->searchNestedArray($this->content, $key, 'key');
+    /**
+     * Search for a key in XML.
+     *
+     * @param  string  $key  Key to search
+     * @param  bool  $strict  If true, search for exact key. Default: `false`.
+     * @param  bool  $value  If true, get `_value` directly (if exists). Default: `false`.
+     * @param  bool  $attributes  If true, get `@attributes` directly (if exists). Default: `false`.
+     */
+    public function search(string $key, bool $strict = false, bool $value = false, bool $attributes = false): mixed
+    {
         $result = $this->parseArray($this->content, $key, $strict);
         if ($value && array_key_exists('_value', $result)) {
             $result = $result['_value'];
         }
-        ray($key, $result);
+        if ($attributes && array_key_exists('@attributes', $result)) {
+            $result = $result['@attributes'];
+        }
 
-        return null;
+        return $result;
     }
 
     private function parseArray(array $array, string $key, bool $strict = false): mixed
@@ -119,36 +124,6 @@ class XmlReader
         return null;
     }
 
-    private function searchNestedArray(string $search, string $mode = 'value'): bool
-    {
-        foreach (new RecursiveIteratorIterator(new RecursiveArrayIterator($this->content)) as $key => $value) {
-            ray($search);
-            if ($search === ${${'mode'}}) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private function searchKeysInMultiDimensionalArray(array $keys)
-    {
-        $results = [];
-
-        if (is_array($this->content)) {
-            $resultArray = array_intersect_key($this->content, array_flip($keys));
-            if (! empty($resultArray)) {
-                $results[] = $resultArray;
-            }
-
-            foreach ($this->content as $subarray) {
-                $results = array_merge($results, $this->searchKeysInMultiDimensionalArray($subarray, $keys));
-            }
-        }
-
-        return $results;
-    }
-
     /**
      * @return array<string, mixed>
      */
@@ -157,11 +132,17 @@ class XmlReader
         return $this->content;
     }
 
+    /**
+     * Save XML to file.
+     */
     public function save(string $path): bool
     {
         return file_put_contents($path, $this->xml) !== false;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(): array
     {
         return $this->content;
