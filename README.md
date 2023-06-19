@@ -1,6 +1,6 @@
 # PHP XML Reader
 
-<!-- ![Banner with eReader picture in background and PHP eBook title](docs/banner.jpg) -->
+![Banner with cards catalog picture in background and PHP XML Reader title](docs/banner.jpg)
 
 [![php][php-version-src]][php-version-href]
 [![version][version-src]][version-href]

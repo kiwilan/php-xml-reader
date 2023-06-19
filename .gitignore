@@ -5,10 +5,10 @@
 build
 composer.lock
 coverage
-docs
 phpunit.xml
 psalm.xml
 vendor
 .php-cs-fixer.cache
 
 tests/test.xml
+.DS_Store

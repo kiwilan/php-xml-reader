@@ -26,7 +26,15 @@ class XmlArray
 
         $root = $dom->documentElement;
         $content = $self->domToArray($dom);
-        $content['@root'] = $root->tagName ?? null;
+
+        $content['@xml'] = [
+            'version' => $dom->xmlVersion,
+            'encoding' => $dom->xmlEncoding,
+        ];
+        $content['@root'] = [
+            'tagName' => $root->tagName ?? '',
+            'namespaceURI' => $root->namespaceURI ?? '',
+        ];
 
         return $content;
     }
