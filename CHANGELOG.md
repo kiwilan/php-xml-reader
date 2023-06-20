@@ -2,6 +2,10 @@
 
 All notable changes to `php-xml-reader` will be documented in this file.
 
+## 0.2.10 - 2023-06-20
+
+- add `rootAttribute()` method to extract safely an attribute from the root element
+
 ## 0.2.0 - 2023-06-20
 
 - `XmlReader::class` has now some properties to get XML informations: `root`, `rootNS`, `rootAttributes`, `version`, `encoding`, `path`, `filename`, `validXml`
