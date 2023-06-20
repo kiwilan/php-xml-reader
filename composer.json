@@ -1,7 +1,7 @@
 {
     "name": "kiwilan/php-xml-reader",
     "description": "PHP package to read XML with nice API.",
-    "version": "0.2.0",
+    "version": "0.2.10",
     "keywords": [
         "php",
         "xml"

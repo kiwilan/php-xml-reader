@@ -242,6 +242,14 @@ class XmlReader
     }
 
     /**
+     * Attribute of root element.
+     */
+    public function rootAttribute(string $key): mixed
+    {
+        return $this->rootAttributes[$key] ?? null;
+    }
+
+    /**
      * Version of XML.
      */
     public function version(): ?string

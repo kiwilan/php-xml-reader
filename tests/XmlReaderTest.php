@@ -39,6 +39,7 @@ it('can parse opf', function () {
     expect($xml->root())->toBe('package');
     expect($xml->rootNS())->toBeArray();
     expect($xml->rootAttributes())->toBeArray();
+    expect($xml->rootAttribute('version'))->toBe('2.0');
     expect($xml->version())->toBe('1.0');
     expect($xml->encoding())->toBe('UTF-8');
     expect($xml->isValidXml())->toBeTrue();
