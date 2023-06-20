@@ -34,9 +34,22 @@ You can use path or content to read XML file.
 ```php
 use KiwiLan\XmlReader\XmlReader;
 
-$reader = XmlReader::make('path/to/file.xml');
+// Read XML from path or from content
+// `mapContent` If a key has only `@content` key, return only the value of `@content`. Default: `true`.
+// `failOnError` Throw exception if XML is invalid. Default: `true`.
+$xml = XmlReader::make('path/to/file.xml', bool $mapContent = true, bool $failOnError = true);
 
-$array = $xml->content(); // XML as multidimensional array
+$root = $xml->root(); // Value of root element
+$rootNS = $xml->rootNS(); // Namespaces of root element
+$rootAttributes = $xml->rootAttributes(); // Attributes of root element
+$version = $xml->version(); // XML version
+$encoding = $xml->encoding(); // XML encoding
+$isValidXml = $xml->isValidXml(); // Check if XML is valid
+$path = $xml->path(); // Path of XML file
+$filename = $xml->filename(); // Filename of XML file
+$converter = $xml->converter(); // Converter used to convert XML to array
+
+$content = $xml->content(); // XML as multidimensional array from `root` (safe)
 
 $key = $xml->search('key'); // Search key will return first key that contain `key` (safe)
 $strictKey = $xml->search('strictKey', strict: true); // Search key will return first key that is `strictKey` (safe)
@@ -45,6 +58,25 @@ $attributableKey = $xml->search('attributableKey', attributes: true); // Search 
 
 $rootKey = $xml->extract('rootKey'); // Extract `rootKey` key, if not found return null (safe)
 $subSubKey = $xml->extract(['rootKey', 'subKey', 'subSubKey']); // Extract `rootKey` and `subKey` and `subSubKey` keys (safe)
+
+$xml->save('path/to/file.xml'); // Save XML file
+$array = $xml->toArray(); // Convert XML to array
+$string = $xml->__toString(); // Convert XML to string
+```
+
+### Get content
+
+If you want to extract only `@content` you could use `getContent()` method, if you want to extract only `@attributes` you could use `getAttributes()` method.
+
+```php
+$title = $xml->extract(['metadata', 'dc:title']);
+$title = XmlReader::getContent($title); // Extract `dc:title` key and return `@content` (safe)
+
+$creator = $xml->extract(['metadata', 'dc:creator']);
+$creator = XmlReader::getContent($creator); // Extract `dc:creator` key and return `@content` (safe)
+
+$creatorAttributes = $xml->extract(['metadata', 'dc:creator']);
+$creatorAttributes = XmlReader::getAttributes($creatorAttributes); // Extract `dc:creator` key and return `@attributes` (safe)
 ```
 
 ## Testing

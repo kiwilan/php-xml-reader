@@ -8,16 +8,33 @@ use DOMElement;
 class XmlConverter
 {
     /**
-     * @return array<string, mixed>
+     * @var array<string, mixed>
      */
-    public static function make(string $xml): array
+    protected array $content = [];
+
+    protected function __construct(
+        protected string $xml,
+        protected bool $skipContentOnly = true,
+    ) {
+    }
+
+    public static function make(string $xml, bool $skipContentOnly = true): self
     {
-        $self = new self();
+        $self = new self($xml, $skipContentOnly);
+
+        $xml = simplexml_load_string($self->xml);
+        $namespaces = $xml->getDocNamespaces(true);
+
+        $ns = [];
+        foreach ($namespaces as $prefix => $namespace) {
+            $prefix = $prefix === '' ? 'xmlns' : "xmlns:{$prefix}";
+            $ns[$prefix] = $namespace;
+        }
 
         $previousValue = libxml_use_internal_errors(true);
         $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->preserveWhiteSpace = false;
-        $dom->loadXml($xml);
+        $dom->loadXml($self->xml);
         libxml_use_internal_errors($previousValue);
 
         if (libxml_get_errors()) {
@@ -25,18 +42,27 @@ class XmlConverter
         }
 
         $root = $dom->documentElement;
-        $content = $self->domToArray($dom);
+        $self->content = $self->domToArray($dom);
 
-        $content['@xml'] = [
-            'version' => $dom->xmlVersion,
-            'encoding' => $dom->xmlEncoding,
-        ];
-        $content['@root'] = [
-            'tagName' => $root->tagName ?? '',
-            'namespaceURI' => $root->namespaceURI ?? '',
-        ];
+        $self->content['version'] = $dom->xmlVersion;
+        $self->content['encoding'] = $dom->xmlEncoding;
+        $self->content['@root'] = $root->tagName ?? null;
+        $self->content['@rootNS'] = $ns;
 
-        return $content;
+        return $self;
+    }
+
+    public function xml(): string
+    {
+        return $this->xml;
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function content(): array
+    {
+        return $this->content;
     }
 
     /**
@@ -52,6 +78,10 @@ class XmlConverter
 
         if ($root->hasChildNodes()) {
             $this->parseChildNodes($root, $output);
+        }
+
+        if ($this->skipContentOnly && count($output) == 1 && isset($output['@content'])) {
+            return $output['@content'];
         }
 
         return $output;
@@ -74,15 +104,11 @@ class XmlConverter
         if ($children->length == 1) {
             $child = $children->item(0);
             if (in_array($child->nodeType, [XML_TEXT_NODE, XML_CDATA_SECTION_NODE])) {
-                // if (empty($output)) {
-                //     $output = trim($child->nodeValue);
-
-                //     return $output;
-                // }
-                $output['_value'] = trim($child->nodeValue);
+                $value = trim($child->nodeValue);
+                $output['@content'] = $value;
 
                 return count($output) == 1
-                    ? $output['_value']
+                    ? $output['@content']
                     : $output;
             }
 
