@@ -42,6 +42,7 @@ $xml = XmlReader::make('path/to/file.xml', bool $mapContent = true, bool $failOn
 $root = $xml->root(); // Value of root element
 $rootNS = $xml->rootNS(); // Namespaces of root element
 $rootAttributes = $xml->rootAttributes(); // Attributes of root element
+$rootAttribute = $xml->rootAttributes('key'); // Value of `key` attribute of root element
 $version = $xml->version(); // XML version
 $encoding = $xml->encoding(); // XML encoding
 $isValidXml = $xml->isValidXml(); // Check if XML is valid
