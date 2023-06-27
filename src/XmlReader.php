@@ -174,9 +174,30 @@ class XmlReader
      * @param  bool  $value  If true, get `_value` directly (if exists). Default: `false`.
      * @param  bool  $attributes  If true, get `@attributes` directly (if exists). Default: `false`.
      */
-    public function search(string $key, bool $strict = false, bool $value = false, bool $attributes = false): mixed
+    public function search(string $key): mixed
     {
-        $result = $this->parseArray($this->content, $key, $strict);
+        $result = $this->findValuesBySimilarKey($this->content, $key);
+
+        return empty($result) ? null : $result;
+    }
+
+    /**
+     * Search for a key in XML.
+     *
+     * @param  string  $key  Key to search
+     * @param  bool  $strict  If true, search for exact key. Default: `false`.
+     * @param  bool  $value  If true, get `_value` directly (if exists). Default: `false`.
+     * @param  bool  $attributes  If true, get `@attributes` directly (if exists). Default: `false`.
+     */
+    public function find(string $key, bool $strict = false, bool $value = false, bool $attributes = false): mixed
+    {
+        $result = $this->findValuesBySimilarKey($this->content, $key, $strict);
+        if (empty($result)) {
+            return null;
+        }
+
+        $result = reset($result);
+
         if (is_string($result)) {
             return $result;
         }
@@ -190,27 +211,31 @@ class XmlReader
         return $result;
     }
 
-    private function parseArray(array $array, string $key, bool $strict = false): mixed
+    private function findValuesBySimilarKey(array $array, string $search, bool $strict = false): array
     {
-        foreach ($array as $k => $v) {
+        $results = [];
+
+        foreach ($array as $key => $value) {
             if ($strict) {
-                if ($k === $key) {
-                    return $v;
+                if ($key === $search) {
+                    $results[$key] = $value;
                 }
             } else {
-                if (str_contains($k, $key)) {
-                    return $v;
+                if (str_contains($key, $search)) {
+                    $results[$key] = $value;
                 }
             }
-            if (is_array($v)) {
-                $resultat = $this->parseArray($v, $key, $strict);
-                if ($resultat !== null) {
-                    return $resultat;
-                }
+
+            if (is_array($value)) {
+                $nestedResults = $this->findValuesBySimilarKey($value, $search, $strict);
+                $results = [
+                    ...$results,
+                    ...$nestedResults,
+                ];
             }
         }
 
-        return null;
+        return $results;
     }
 
     /**

@@ -53,10 +53,31 @@ it('can parse opf', function () {
 it('can search', function () {
     $xml = XmlReader::make(OPF);
 
-    $creator = $xml->search('creator', strict: true);
-    $dccreator = $xml->search('dc:creator');
-    $publisher = $xml->search('dc:publisher', value: true);
-    $attributes = $xml->search('creator', attributes: true);
+    $creator = $xml->find('creator', strict: true);
+    $dc = $xml->search('dc:');
+    $titleNear = $xml->find('dc:ti');
+    $title = $xml->find('dc:title');
+    $dccreator = $xml->find('dc:creator');
+    $publisher = $xml->find('dc:publisher', value: true);
+    $attributes = $xml->find('creator', attributes: true);
+
+    expect($dc)->toBeArray();
+    expect($dc['dc:title'])->toBe("Le clan de l'ours des cavernes");
+    expect($titleNear)->toBe("Le clan de l'ours des cavernes");
+    expect($title)->toBe("Le clan de l'ours des cavernes");
+    expect($creator)->toBeNull();
+    expect($dccreator)->toBeArray();
+    expect($publisher)->toBeString();
+    expect($attributes)->toBeArray();
+});
+
+it('can find', function () {
+    $xml = XmlReader::make(OPF);
+
+    $creator = $xml->find('creator', strict: true);
+    $dccreator = $xml->find('dc:creator');
+    $publisher = $xml->find('dc:publisher', value: true);
+    $attributes = $xml->find('creator', attributes: true);
 
     expect($creator)->toBeNull();
     expect($dccreator)->toBeArray();
@@ -64,13 +85,13 @@ it('can search', function () {
     expect($attributes)->toBeArray();
 });
 
-it('can search without map content', function () {
+it('can find without map content', function () {
     $xml = XmlReader::make(OPF, mapContent: false);
 
-    $creator = $xml->search('creator', strict: true);
-    $dccreator = $xml->search('dc:creator');
-    $publisher = $xml->search('dc:publisher', value: true);
-    $attributes = $xml->search('creator', attributes: true);
+    $creator = $xml->find('creator', strict: true);
+    $dccreator = $xml->find('dc:creator');
+    $publisher = $xml->find('dc:publisher', value: true);
+    $attributes = $xml->find('creator', attributes: true);
 
     expect($creator)->toBeNull();
     expect($dccreator)->toBeArray();
