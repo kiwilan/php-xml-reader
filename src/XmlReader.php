@@ -170,9 +170,6 @@ class XmlReader
      * Search for a key in XML.
      *
      * @param  string  $key  Key to search
-     * @param  bool  $strict  If true, search for exact key. Default: `false`.
-     * @param  bool  $value  If true, get `_value` directly (if exists). Default: `false`.
-     * @param  bool  $attributes  If true, get `@attributes` directly (if exists). Default: `false`.
      */
     public function search(string $key): mixed
     {
@@ -186,7 +183,7 @@ class XmlReader
      *
      * @param  string  $key  Key to search
      * @param  bool  $strict  If true, search for exact key. Default: `false`.
-     * @param  bool  $value  If true, get `_value` directly (if exists). Default: `false`.
+     * @param  bool  $content  If true, get `@content` directly (if exists). Default: `false`.
      * @param  bool  $attributes  If true, get `@attributes` directly (if exists). Default: `false`.
      */
     public function find(string $key, bool $strict = false, bool $content = false, bool $attributes = false): mixed
@@ -228,10 +225,7 @@ class XmlReader
 
             if (is_array($value)) {
                 $nestedResults = $this->findValuesBySimilarKey($value, $search, $strict);
-                $results = [
-                    ...$results,
-                    ...$nestedResults,
-                ];
+                $results = array_merge($results, $nestedResults);
             }
         }
 
