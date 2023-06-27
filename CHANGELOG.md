@@ -2,6 +2,11 @@
 
 All notable changes to `php-xml-reader` will be documented in this file.
 
+## 0.2.2 - 2023-06-27
+
+- `search()` method has now only one parameter with key to search, it will search without `strict` option and return **all values** near to the key
+- Add new method `find()` with all options of previous `search()` method
+
 ## 0.2.10 - 2023-06-20
 
 - add `rootAttribute()` method to extract safely an attribute from the root element
