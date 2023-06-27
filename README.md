@@ -50,19 +50,31 @@ $path = $xml->path(); // Path of XML file
 $filename = $xml->filename(); // Filename of XML file
 $converter = $xml->converter(); // Converter used to convert XML to array
 
-$content = $xml->content(); // XML as multidimensional array from `root` (safe)
-
-$key = $xml->search('key'); // Search key will return first key that contain `key` (safe)
-$strictKey = $xml->search('strictKey', strict: true); // Search key will return first key that is `strictKey` (safe)
-$valueKey = $xml->search('valueKey', value: true); // Search key will return first key that contain `valueKey` and return `_value` (safe)
-$attributableKey = $xml->search('attributableKey', attributes: true); // Search key will return first key that contain `attributableKey` and return `_attributes` (safe)
-
-$rootKey = $xml->extract('rootKey'); // Extract `rootKey` key, if not found return null (safe)
-$subSubKey = $xml->extract(['rootKey', 'subKey', 'subSubKey']); // Extract `rootKey` and `subKey` and `subSubKey` keys (safe)
-
 $xml->save('path/to/file.xml'); // Save XML file
 $array = $xml->toArray(); // Convert XML to array
 $string = $xml->__toString(); // Convert XML to string
+```
+
+XML as multidimensional array from `root` (safe).
+
+```php
+$content = $xml->content();
+```
+
+### Search and extract
+
+You can search and extract key from XML file.
+
+```php
+$title = $xml->find('title'); // Find key will return first value where key that contain `title` (safe)
+$dcTitle = $xml->find('dc:title', strict: true); // Find key will return first value where key is `dc:title` (safe)
+$dcCreator = $xml->find('dc:creator', content: true); // Find key will return first value where key that contain `dc:title` and return `@content` (safe)
+$dcCreator = $xml->find('dc:creator', attributes: true); // Find key will return first value where key contain `dc:creator` and return `@attributes` (safe)
+
+$dc = $xml->search('dc'); // Search will return all values that contain `dc` (safe)
+
+$rootKey = $xml->extract('metadata'); // Extract `metadata` key, if not found return null (safe)
+$subSubKey = $xml->extract(['metadata', 'dc:title']); // Extract `metadata` and `dc:title` keys (safe)
 ```
 
 ### Get content

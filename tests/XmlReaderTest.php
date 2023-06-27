@@ -58,7 +58,7 @@ it('can search', function () {
     $titleNear = $xml->find('dc:ti');
     $title = $xml->find('dc:title');
     $dccreator = $xml->find('dc:creator');
-    $publisher = $xml->find('dc:publisher', value: true);
+    $publisher = $xml->find('dc:publisher', content: true);
     $attributes = $xml->find('creator', attributes: true);
 
     expect($dc)->toBeArray();
@@ -76,7 +76,7 @@ it('can find', function () {
 
     $creator = $xml->find('creator', strict: true);
     $dccreator = $xml->find('dc:creator');
-    $publisher = $xml->find('dc:publisher', value: true);
+    $publisher = $xml->find('dc:publisher', content: true);
     $attributes = $xml->find('creator', attributes: true);
 
     expect($creator)->toBeNull();
@@ -90,7 +90,7 @@ it('can find without map content', function () {
 
     $creator = $xml->find('creator', strict: true);
     $dccreator = $xml->find('dc:creator');
-    $publisher = $xml->find('dc:publisher', value: true);
+    $publisher = $xml->find('dc:publisher', content: true);
     $attributes = $xml->find('creator', attributes: true);
 
     expect($creator)->toBeNull();

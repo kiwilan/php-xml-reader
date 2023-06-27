@@ -189,7 +189,7 @@ class XmlReader
      * @param  bool  $value  If true, get `_value` directly (if exists). Default: `false`.
      * @param  bool  $attributes  If true, get `@attributes` directly (if exists). Default: `false`.
      */
-    public function find(string $key, bool $strict = false, bool $value = false, bool $attributes = false): mixed
+    public function find(string $key, bool $strict = false, bool $content = false, bool $attributes = false): mixed
     {
         $result = $this->findValuesBySimilarKey($this->content, $key, $strict);
         if (empty($result)) {
@@ -201,7 +201,7 @@ class XmlReader
         if (is_string($result)) {
             return $result;
         }
-        if ($value && array_key_exists('@content', $result)) {
+        if ($content && array_key_exists('@content', $result)) {
             $result = $result['@content'];
         }
         if ($attributes && array_key_exists('@attributes', $result)) {
