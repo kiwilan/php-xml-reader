@@ -2,6 +2,10 @@
 
 All notable changes to `php-xml-reader` will be documented in this file.
 
+## 0.2.22 - 2023-06-27
+
+- Fix spread array error on linux
+
 ## 0.2.21 - 2023-06-27
 
 - `find()` parameter `value` name to `content`
