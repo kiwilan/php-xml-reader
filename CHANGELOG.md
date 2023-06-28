@@ -2,6 +2,11 @@
 
 All notable changes to `php-xml-reader` will be documented in this file.
 
+## 0.2.30 - 2023-06-28
+
+- With `find()` method, `strict` param is now `true` by default
+- With `search()` method, all values are now returned as array with default key if not duplicate, otherwise keys are incremented
+
 ## 0.2.22 - 2023-06-27
 
 - Fix spread array error on linux
