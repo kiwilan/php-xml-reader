@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+  xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:spotify="http://www.spotify.com/ns/rss" xmlns:psc="http://podlove.org/simple-chapters/"
+  xmlns:media="https://search.yahoo.com/mrss/"
+  xmlns:podcastindex="https://podcastindex.org/namespace/1.0"
+  xmlns:podlove="http://podlove.org/simple-chapters/" version="2.0">
+  <channel>
+    <title>2 Heures De Perdues</title>
+    <link>https://www.2hdp.fr</link>
+    <itunes:subtitle>Pourquoi gagner du temps quand on peut en perdre devant de mauvais films ?</itunes:subtitle>
+    <description>Petit podcast de rigolos pour les amateurs de cinéma. Pourquoi gagner du temps
+      quand on peut en perdre devant de mauvais films</description>
+    <itunes:summary>Petit podcast de rigolos pour les amateurs de cinéma. Pourquoi gagner du temps
+      quand on peut en perdre devant de mauvais films</itunes:summary>
+    <googleplay:description>Petit podcast de rigolos pour les amateurs de cinéma. Pourquoi gagner du
+      temps quand on peut en perdre devant de mauvais films</googleplay:description>
+    <language>fr</language>
+    <spotify:countryOfOrigin>fr</spotify:countryOfOrigin>
+    <copyright>℗ &amp; © 2019 Fréquence Moderne</copyright>
+    <lastBuildDate>Wed, 01 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
+    <webMaster>feeds@ausha.co (Ausha)</webMaster>
+    <generator>Ausha (https://www.ausha.co)</generator>
+    <itunes:keywords>films,critiques,comédie</itunes:keywords>
+    <itunes:author>2 Heures De Perdues</itunes:author>
+    <itunes:owner>
+      <itunes:name>2 Heures De Perdues</itunes:name>
+      <itunes:email>2heuresdeperdues@gmail.com</itunes:email>
+    </itunes:owner>
+    <googleplay:author>2 Heures De Perdues</googleplay:author>
+    <googleplay:email>2heuresdeperdues@gmail.com</googleplay:email>
+    <itunes:explicit>yes</itunes:explicit>
+    <googleplay:explicit>yes</googleplay:explicit>
+    <itunes:block>Yes</itunes:block>
+    <googleplay:block>Yes</googleplay:block>
+    <itunes:type>episodic</itunes:type>
+    <category>TV &amp;amp; Film</category>
+    <itunes:category text="TV &amp;amp; Film">
+      <itunes:category text="Film Reviews" />
+    </itunes:category>
+    <category>Leisure</category>
+    <itunes:category text="Leisure">
+      <itunes:category text="Hobbies" />
+    </itunes:category>
+    <category>Fiction</category>
+    <itunes:category text="Fiction" />
+    <image>
+      <url>https://raw.githubusercontent.com/kiwilan/php-rss/main/tests/examples/folder.jpeg</url>
+      <title>2 Heures De Perdues</title>
+      <link>https://www.2hdp.fr</link>
+    </image>
+    <itunes:image
+      href="https://raw.githubusercontent.com/kiwilan/php-rss/main/tests/examples/folder.jpeg" />
+    <googleplay:image
+      href="https://raw.githubusercontent.com/kiwilan/php-rss/main/tests/examples/folder.jpeg" />
+    <item>
+      <title>Peau d'Ane</title>
+      <guid isPermaLink="true">custom-and-unique-key</guid>
+      <itunes:subtitle>On discute du chef d'oeuvre de Jacques. Des réactions ? @2_HDP</itunes:subtitle>
+      <description><![CDATA[<p>On discute du chef d'oeuvre de Jacques. Des réactions ? @2_HDP</p>]]></description>
+      <content:encoded><![CDATA[<p>On discute du chef d'oeuvre de Jacques. Des réactions ? @2_HDP</p>]]></content:encoded>
+      <pubDate>Wed, 14 Jun 2023 08:39:25 +0000</pubDate>
+      <enclosure
+        url="https://chtbl.com/track/47E579/https://audio.ausha.co/B4mpWfDq5KDa.mp3?t=1685693288"
+        length="56898528" type="audio/mpeg" />
+      <link>https://podcast.ausha.co/2-heures-de-perdues/peau-d-ane</link>
+      <itunes:author>2 Heures de Perdues</itunes:author>
+      <googleplay:author>2 Heures de Perdues</googleplay:author>
+      <itunes:keywords>keyword1,keyword2</itunes:keywords>
+      <itunes:duration>3551</itunes:duration>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:season>9</itunes:season>
+      <itunes:episode>34</itunes:episode>
+      <itunes:explicit>yes</itunes:explicit>
+      <itunes:image
+        href="https://image.ausha.co/XboDHYC69Oorw8MBObAkQ2sTPdxGTkexH3nYQ8Ky_1400x1400.jpeg?t=1619074925" />
+      <googleplay:image
+        href="https://image.ausha.co/XboDHYC69Oorw8MBObAkQ2sTPdxGTkexH3nYQ8Ky_1400x1400.jpeg?t=1619074925" />
+    </item>
+    <item>
+      <title>Movie 2</title>
+      <pubDate>Wed, 14 Jun 2023 08:39:25 +0000</pubDate>
+      <enclosure
+        url="https://chtbl.com/track/47E579/https://audio.ausha.co/B4mpWfDq5KDa.mp3?t=1685693288"
+        length="56898528" type="audio/mpeg" />
+      <link>https://podcast.ausha.co/2-heures-de-perdues/peau-d-ane</link>
+      <itunes:explicit>yes</itunes:explicit>
+      <itunes:episodeType>full</itunes:episodeType>
+    </item>
+    <item>
+      <title>Movie 1</title>
+      <link>https://podcast.ausha.co/2-heures-de-perdues/peau-d-ane</link>
+      <pubDate>Wed, 14 Jun 2023 08:39:25 +0000</pubDate>
+      <enclosure
+        url="https://chtbl.com/track/47E579/https://audio.ausha.co/B4mpWfDq5KDa.mp3?t=1685693288"
+        length="56898528" type="audio/mpeg" />
+      <itunes:episodeType>full</itunes:episodeType>
+    </item>
+  </channel>
+</rss>

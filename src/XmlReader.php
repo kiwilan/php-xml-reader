@@ -213,26 +213,34 @@ class XmlReader
         $results = [];
 
         foreach ($array as $key => $value) {
-            if ($strict) {
-                if ($key === $search) {
-                    $results[$key] = $value;
-                }
-            } else {
-                if (str_contains($key, $search)) {
-                    $unique = $key.'-'.$index;
-                    if (array_key_exists($key, $results)) {
-                        $results[$unique] = $value;
-                    } else {
-                        $results[$key] = $value;
-                    }
+            if ($strict && $key === $search) {
+                $results[$key] = $value;
+            }
 
+            if (! $strict && str_contains($key, $search)) {
+                $unique = $key.'-'.$index;
+                if (array_key_exists($key, $results)) {
+                    $results[$unique] = $value;
+                } else {
+                    $results[$key] = $value;
                 }
             }
 
             if (is_array($value)) {
-                $index++;
                 $nestedResults = $this->findValuesBySimilarKey($value, $search, $strict, $index);
-                $results = array_merge($results, $nestedResults);
+                if (empty($nestedResults)) {
+                    continue;
+                }
+
+                foreach ($nestedResults as $k => $v) {
+                    $unique = $k.'-'.$index;
+                    if (array_key_exists($k, $results)) {
+                        $results[$unique] = $v;
+                    } else {
+                        $results[$k] = $v;
+                    }
+                }
+                $index++;
             }
         }
 

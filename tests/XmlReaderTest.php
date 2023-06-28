@@ -150,3 +150,15 @@ it('can fail if not exists', function () {
     expect(fn () => XmlReader::make('./not-exist.xml'))
         ->toThrow(Exception::class, 'File `./not-exist.xml` not found');
 });
+
+it('can parse feed', function () {
+    $xml = XmlReader::make(FEED);
+
+    $find = $xml->find('title');
+    $search = $xml->search('title');
+
+    expect($find)->toBeString();
+    expect($find)->toBe('2 Heures De Perdues');
+    expect($search)->toBeArray();
+    expect($search['title'])->toBe('2 Heures De Perdues');
+});
