@@ -2,6 +2,10 @@
 
 All notable changes to `php-xml-reader` will be documented in this file.
 
+## 0.2.31 - 2023-06-28
+
+- Clean `find()` and `search()` methods
+
 ## 0.2.30 - 2023-06-28
 
 - With `find()` method, `strict` param is now `true` by default
