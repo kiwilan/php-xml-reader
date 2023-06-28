@@ -59,6 +59,9 @@ XML as multidimensional array from `root` (safe).
 
 ```php
 $content = $xml->content();
+
+// Basic usage
+$title = $content['metadata']['dc:title'] ?? null;
 ```
 
 ### Search and extract
