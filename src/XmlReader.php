@@ -182,11 +182,11 @@ class XmlReader
      * Search for a key in XML.
      *
      * @param  string  $key  Key to search
-     * @param  bool  $strict  If true, search for exact key. Default: `false`.
+     * @param  bool  $strict  If true, search for exact key. Default: `true`.
      * @param  bool  $content  If true, get `@content` directly (if exists). Default: `false`.
      * @param  bool  $attributes  If true, get `@attributes` directly (if exists). Default: `false`.
      */
-    public function find(string $key, bool $strict = false, bool $content = false, bool $attributes = false): mixed
+    public function find(string $key, bool $strict = true, bool $content = false, bool $attributes = false): mixed
     {
         $result = $this->findValuesBySimilarKey($this->content, $key, $strict);
         if (empty($result)) {
@@ -208,7 +208,7 @@ class XmlReader
         return $result;
     }
 
-    private function findValuesBySimilarKey(array $array, string $search, bool $strict = false): array
+    private function findValuesBySimilarKey(array $array, string $search, bool $strict = false, int $index = 0): array
     {
         $results = [];
 
@@ -219,12 +219,19 @@ class XmlReader
                 }
             } else {
                 if (str_contains($key, $search)) {
-                    $results[$key] = $value;
+                    $unique = $key.'-'.$index;
+                    if (array_key_exists($key, $results)) {
+                        $results[$unique] = $value;
+                    } else {
+                        $results[$key] = $value;
+                    }
+
                 }
             }
 
             if (is_array($value)) {
-                $nestedResults = $this->findValuesBySimilarKey($value, $search, $strict);
+                $index++;
+                $nestedResults = $this->findValuesBySimilarKey($value, $search, $strict, $index);
                 $results = array_merge($results, $nestedResults);
             }
         }

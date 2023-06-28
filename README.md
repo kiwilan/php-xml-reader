@@ -66,8 +66,8 @@ $content = $xml->content();
 You can search and extract key from XML file.
 
 ```php
-$title = $xml->find('title'); // Find key will return first value where key that contain `title` (safe)
-$dcTitle = $xml->find('dc:title', strict: true); // Find key will return first value where key is `dc:title` (safe)
+$title = $xml->find('title', strict: false); // Find key will return first value where key that contain `title` (safe)
+$dcTitle = $xml->find('dc:title'); // Find key will return first value where key is `dc:title` (safe)
 $dcCreator = $xml->find('dc:creator', content: true); // Find key will return first value where key that contain `dc:title` and return `@content` (safe)
 $dcCreator = $xml->find('dc:creator', attributes: true); // Find key will return first value where key contain `dc:creator` and return `@attributes` (safe)
 
