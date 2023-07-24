@@ -40,6 +40,8 @@ use KiwiLan\XmlReader\XmlReader;
 $xml = XmlReader::make('path/to/file.xml', bool $mapContent = true, bool $failOnError = true);
 ```
 
+### Methods
+
 |              Method               |               Description                |               Type                |
 | :-------------------------------: | :--------------------------------------: | :-------------------------------: |
 |          `$xml->root()`           |          Value of root element           |             `?string`             |
@@ -55,6 +57,8 @@ $xml = XmlReader::make('path/to/file.xml', bool $mapContent = true, bool $failOn
 | `$xml->save('path/to/file.xml');` |              Save XML file               |              `bool`               |
 |        `$xml->toArray();`         |           Convert XML to array           |      `array<string, mixed>`       |
 |       `$xml->__toString();`       |          Convert XML to string           |             `string`              |
+
+### Advanced methods
 
 |             Method              |                       Description                       |               Type               |              Options              |
 | :-----------------------------: | :-----------------------------------------------------: | :------------------------------: | :-------------------------------: |
