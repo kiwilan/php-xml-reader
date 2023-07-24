@@ -29,70 +29,116 @@ composer require kiwilan/php-xml-reader
 
 ## Usage
 
-You can use path or content to read XML file.
+You can read XML from path or from content.
+
+-   `mapContent`: `boolean` If a key has only `@content` key, return only the value of `@content`. Default: `true`.
+-   `failOnError`: `boolean` Throw exception if XML is invalid. Default: `true`.
 
 ```php
 use KiwiLan\XmlReader\XmlReader;
 
-// Read XML from path or from content
-// `mapContent` If a key has only `@content` key, return only the value of `@content`. Default: `true`.
-// `failOnError` Throw exception if XML is invalid. Default: `true`.
 $xml = XmlReader::make('path/to/file.xml', bool $mapContent = true, bool $failOnError = true);
-
-$root = $xml->root(); // Value of root element
-$rootNS = $xml->rootNS(); // Namespaces of root element
-$rootAttributes = $xml->rootAttributes(); // Attributes of root element
-$rootAttribute = $xml->rootAttributes('key'); // Value of `key` attribute of root element
-$version = $xml->version(); // XML version
-$encoding = $xml->encoding(); // XML encoding
-$isValidXml = $xml->isValidXml(); // Check if XML is valid
-$path = $xml->path(); // Path of XML file
-$filename = $xml->filename(); // Filename of XML file
-$converter = $xml->converter(); // Converter used to convert XML to array
-
-$xml->save('path/to/file.xml'); // Save XML file
-$array = $xml->toArray(); // Convert XML to array
-$string = $xml->__toString(); // Convert XML to string
 ```
+
+|              Method               |               Description                |               Type                |
+| :-------------------------------: | :--------------------------------------: | :-------------------------------: |
+|          `$xml->root()`           |          Value of root element           |             `?string`             |
+|         `$xml->rootNS()`          |        Namespaces of root element        |            `string[]`             |
+|     `$xml->rootAttributes()`      |        Attributes of root element        |      `array<string, mixed>`       |
+|  `$xml->rootAttributes('key');`   | Value of `key` attribute of root element |              `mixed`              |
+|        `$xml->version();`         |               XML version                |             `?string`             |
+|        `$xml->encoding();`        |               XML encoding               |             `?string`             |
+|       `$xml->isValidXml();`       |          Check if XML is valid           |              `bool`               |
+|          `$xml->path();`          |             Path of XML file             |             `?string`             |
+|        `$xml->filename();`        |           Filename of XML file           |             `?string`             |
+|       `$xml->converter();`        |  Converter used to convert XML to array  | `\Kiwilan\XmlReader\XmlConverter` |
+| `$xml->save('path/to/file.xml');` |              Save XML file               |              `bool`               |
+|        `$xml->toArray();`         |           Convert XML to array           |      `array<string, mixed>`       |
+|       `$xml->__toString();`       |          Convert XML to string           |             `string`              |
 
 XML as multidimensional array from `root` (safe).
 
 ```php
 $content = $xml->content();
+```
 
-// Basic usage
+Basic usage.
+
+```php
 $title = $content['metadata']['dc:title'] ?? null;
 ```
 
-### Search and extract
+### Find
 
-You can search and extract key from XML file.
+Find key will return first value where key that contain `title` (safe).
 
 ```php
-$title = $xml->find('title', strict: false); // Find key will return first value where key that contain `title` (safe)
-$dcTitle = $xml->find('dc:title'); // Find key will return first value where key is `dc:title` (safe)
-$dcCreator = $xml->find('dc:creator', content: true); // Find key will return first value where key that contain `dc:title` and return `@content` (safe)
-$dcCreator = $xml->find('dc:creator', attributes: true); // Find key will return first value where key contain `dc:creator` and return `@attributes` (safe)
+$title = $xml->find('title', strict: false);
+```
 
-$dc = $xml->search('dc'); // Search will return all values that contain `dc` (safe)
+Find key will return first value where key is `dc:title` (safe)
 
-$rootKey = $xml->extract('metadata'); // Extract `metadata` key, if not found return null (safe)
-$subSubKey = $xml->extract(['metadata', 'dc:title']); // Extract `metadata` and `dc:title` keys (safe)
+```php
+$dcTitle = $xml->find('dc:title');
+```
+
+Find key will return first value where key that contain `dc:title` and return `@content` (safe)
+
+```php
+$dcCreator = $xml->find('dc:creator', content: true);
+```
+
+Find key will return first value where key contain `dc:creator` and return `@attributes` (safe)
+
+```php
+$dcCreator = $xml->find('dc:creator', attributes: true);
+```
+
+### Search
+
+Search will return all values that contain `dc` (safe)
+
+```php
+$dc = $xml->search('dc');
+```
+
+### Extract
+
+Extract `metadata` key, if not found return null (safe)
+
+```php
+$rootKey = $xml->extract('metadata');
+```
+
+Extract `metadata` and `dc:title` keys (safe)
+
+```php
+$subSubKey = $xml->extract(['metadata', 'dc:title']);
 ```
 
 ### Get content
 
 If you want to extract only `@content` you could use `getContent()` method, if you want to extract only `@attributes` you could use `getAttributes()` method.
 
+Extract `dc:title` key and return `@content` (safe)
+
 ```php
 $title = $xml->extract(['metadata', 'dc:title']);
-$title = XmlReader::getContent($title); // Extract `dc:title` key and return `@content` (safe)
+$title = XmlReader::getContent($title);
+```
 
+Extract `dc:creator` key and return `@content` (safe)
+
+```php
 $creator = $xml->extract(['metadata', 'dc:creator']);
-$creator = XmlReader::getContent($creator); // Extract `dc:creator` key and return `@content` (safe)
+$creator = XmlReader::getContent($creator);
+```
 
+Extract `dc:creator` key and return `@attributes` (safe)
+
+```php
 $creatorAttributes = $xml->extract(['metadata', 'dc:creator']);
-$creatorAttributes = XmlReader::getAttributes($creatorAttributes); // Extract `dc:creator` key and return `@attributes` (safe)
+$creatorAttributes = XmlReader::getAttributes($creatorAttributes);
 ```
 
 ## Testing
