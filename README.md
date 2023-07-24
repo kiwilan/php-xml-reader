@@ -56,6 +56,17 @@ $xml = XmlReader::make('path/to/file.xml', bool $mapContent = true, bool $failOn
 |        `$xml->toArray();`         |           Convert XML to array           |      `array<string, mixed>`       |
 |       `$xml->__toString();`       |          Convert XML to string           |             `string`              |
 
+|             Method              |                       Description                       |               Type               |              Options              |
+| :-----------------------------: | :-----------------------------------------------------: | :------------------------------: | :-------------------------------: |
+|        `$xml->content()`        |              XML as multidimensional array              |      `array<string, mixed>`      |                                   |
+|       `$xml->find('key')`       | Find key will return first value where that contain key |      `array<string, mixed>`      | `strict`, `content`, `attributes` |
+|      `$xml->search('key')`      |     Search will return all values that contain key      |             `mixed`              |                                   |
+|    `$xml->extract(...keys)`     |   Extract `metadata` key, if not found return `null`    |             `mixed`              |                                   |
+|  `XmlReader::getContent(key)`   |                  Get content of entry                   |             `mixed`              |                                   |
+| `XmlReader::getAttributes(key)` |                 Get attributes of entry                 | `array<string, mixed>` or `null` |                                   |
+
+### Basic usage
+
 XML as multidimensional array from `root` (safe).
 
 ```php
