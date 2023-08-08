@@ -93,7 +93,7 @@ class XmlReader
     /**
      * Get content of entry, if entry has `@content` key, return only the value of `@content` otherwise return the entry.
      */
-    public static function getContent(mixed $entry): mixed
+    public static function parseContent(mixed $entry): mixed
     {
         if (is_array($entry)) {
             if (array_key_exists('@content', $entry)) {
@@ -111,7 +111,7 @@ class XmlReader
      *
      * @return array<string, mixed>|null
      */
-    public static function getAttributes(mixed $entry): ?array
+    public static function parseAttributes(mixed $entry): ?array
     {
         if (is_array($entry)) {
             if (array_key_exists('@attributes', $entry)) {
@@ -128,7 +128,7 @@ class XmlReader
             return;
         }
 
-        $content = $this->converter->content();
+        $content = $this->converter->getContent();
         $this->root = $content['@root'] ?? null;
         $this->rootNS = $content['@rootNS'] ?? null;
         $this->version = $content['version'] ?? null;
@@ -250,7 +250,7 @@ class XmlReader
     /**
      * Value of root element.
      */
-    public function root(): ?string
+    public function getRoot(): ?string
     {
         return $this->root;
     }
@@ -260,7 +260,7 @@ class XmlReader
      *
      * @return string[]
      */
-    public function rootNS(): array
+    public function getRootNS(): array
     {
         return $this->rootNS;
     }
@@ -270,7 +270,7 @@ class XmlReader
      *
      * @return array<string, mixed>
      */
-    public function rootAttributes(): array
+    public function getRootAttributes(): array
     {
         return $this->rootAttributes;
     }
@@ -278,7 +278,7 @@ class XmlReader
     /**
      * Attribute of root element.
      */
-    public function rootAttribute(string $key): mixed
+    public function getRootAttribute(string $key): mixed
     {
         return $this->rootAttributes[$key] ?? null;
     }
@@ -286,7 +286,7 @@ class XmlReader
     /**
      * Version of XML.
      */
-    public function version(): ?string
+    public function getVersion(): ?string
     {
         return $this->version;
     }
@@ -294,7 +294,7 @@ class XmlReader
     /**
      * Encoding of XML.
      */
-    public function encoding(): ?string
+    public function getEncoding(): ?string
     {
         return $this->encoding;
     }
@@ -304,7 +304,7 @@ class XmlReader
      *
      * @return array<string, mixed>
      */
-    public function content(): array
+    public function getContent(): array
     {
         return $this->content;
     }
@@ -320,7 +320,7 @@ class XmlReader
     /**
      * Path of XML file.
      */
-    public function path(): ?string
+    public function getPath(): ?string
     {
         return $this->path;
     }
@@ -328,7 +328,7 @@ class XmlReader
     /**
      * Filename of XML file.
      */
-    public function filename(): ?string
+    public function getFilename(): ?string
     {
         return $this->filename;
     }
@@ -346,7 +346,7 @@ class XmlReader
      */
     public function save(string $path): bool
     {
-        return file_put_contents($path, $this->converter->xml()) !== false;
+        return file_put_contents($path, $this->converter->getXml()) !== false;
     }
 
     /**
@@ -356,7 +356,7 @@ class XmlReader
      */
     public function toArray(): array
     {
-        return $this->converter->content();
+        return $this->converter->getContent();
     }
 
     /**
@@ -364,6 +364,6 @@ class XmlReader
      */
     public function __toString(): string
     {
-        return $this->converter->xml();
+        return $this->converter->getXml();
     }
 }

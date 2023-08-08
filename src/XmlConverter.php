@@ -52,7 +52,7 @@ class XmlConverter
         return $self;
     }
 
-    public function xml(): string
+    public function getXml(): string
     {
         return $this->xml;
     }
@@ -60,7 +60,7 @@ class XmlConverter
     /**
      * @return array<string, mixed>
      */
-    public function content(): array
+    public function getContent(): array
     {
         return $this->content;
     }
@@ -68,15 +68,16 @@ class XmlConverter
     /**
      * @return array<string, mixed>
      */
-    private function domToArray(DOMDocument|DOMElement $root): array|string
+    private function domToArray(mixed $root): array|string
     {
         $output = [];
 
-        if ($root->hasAttributes()) {
+        /** @var DOMDocument|DOMElement $root */
+        if (method_exists($root, 'hasAttributes') && $root->hasAttributes()) {
             $this->parseAttributes($root, $output);
         }
 
-        if ($root->hasChildNodes()) {
+        if (method_exists($root, 'hasChildNodes') && $root->hasChildNodes()) {
             $this->parseChildNodes($root, $output);
         }
 
@@ -87,8 +88,13 @@ class XmlConverter
         return $output;
     }
 
-    private function parseAttributes(DOMDocument|DOMElement $root, array &$output): void
+    private function parseAttributes(mixed $root, array &$output): void
     {
+        /** @var DOMDocument|DOMElement $root */
+        if (! property_exists($root, 'attributes')) {
+            return;
+        }
+
         $attrs = $root->attributes;
         foreach ($attrs as $attr) {
             $output['@attributes'][$attr->name] = $attr->value;
@@ -98,8 +104,13 @@ class XmlConverter
     /**
      * @return array<string, mixed>|string
      */
-    private function parseChildNodes(DOMDocument|DOMElement $root, array &$output): array|string
+    private function parseChildNodes(mixed $root, array &$output): array|string
     {
+        /** @var DOMDocument|DOMElement $root */
+        if (! property_exists($root, 'childNodes')) {
+            return $output;
+        }
+
         $children = $root->childNodes;
         if ($children->length == 1) {
             $child = $children->item(0);

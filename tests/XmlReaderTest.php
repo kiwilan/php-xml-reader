@@ -11,19 +11,19 @@ it('can parse opf', function () {
     $anykey = $xml->extract('anykey');
 
     $metaContent = $xml->extract('metadata');
-    $metaContent = XmlReader::getContent($metaContent);
+    $metaContent = XmlReader::parseContent($metaContent);
 
     $title = $xml->extract(['metadata', 'dc:title']);
-    $title = XmlReader::getContent($title);
+    $title = XmlReader::parseContent($title);
 
     $creator = $xml->extract(['metadata', 'dc:creator']);
-    $creator = XmlReader::getContent($creator);
+    $creator = XmlReader::parseContent($creator);
 
     $titleAttributes = $xml->extract(['metadata', 'dc:title']);
-    $titleAttributes = XmlReader::getAttributes($titleAttributes);
+    $titleAttributes = XmlReader::parseAttributes($titleAttributes);
 
     $creatorAttributes = $xml->extract(['metadata', 'dc:creator']);
-    $creatorAttributes = XmlReader::getAttributes($creatorAttributes);
+    $creatorAttributes = XmlReader::parseAttributes($creatorAttributes);
 
     expect($metaContent)->toBeArray();
     expect($title)->toBe("Le clan de l'ours des cavernes");
@@ -35,19 +35,28 @@ it('can parse opf', function () {
     expect($meta)->toBeArray();
     expect($anykey)->toBeNull();
 
-    expect($xml->content())->toBeArray();
-    expect($xml->root())->toBe('package');
-    expect($xml->rootNS())->toBeArray();
-    expect($xml->rootAttributes())->toBeArray();
-    expect($xml->rootAttribute('version'))->toBe('2.0');
-    expect($xml->version())->toBe('1.0');
-    expect($xml->encoding())->toBe('UTF-8');
+    expect($xml->getContent())->toBeArray();
+    expect($xml->getRoot())->toBe('package');
+    expect($xml->getRootNS())->toBeArray();
+    expect($xml->getRootAttributes())->toBeArray();
+    expect($xml->getRootAttribute('version'))->toBe('2.0');
+    expect($xml->getVersion())->toBe('1.0');
+    expect($xml->getEncoding())->toBe('UTF-8');
     expect($xml->isValidXml())->toBeTrue();
-    expect($xml->path())->toBe(OPF);
-    expect($xml->filename())->toBe('epub.opf');
+    expect($xml->getPath())->toBe(OPF);
+    expect($xml->getFilename())->toBe('epub.opf');
     expect($xml->converter())->toBeInstanceOf(XmlConverter::class);
     expect($xml->toArray())->toBeArray();
     expect($xml->__toString())->toBeString();
+});
+
+it('can parse opf comment', function () {
+    $xml = XmlReader::make(OPF_INSURGENT);
+
+    $metadata = $xml->extract('metadata');
+    $title = $xml->find('dc:title');
+
+    expect($title)->toBe('Insurgent');
 });
 
 it('can search', function () {
@@ -104,15 +113,15 @@ it('can find without map content', function () {
 it('can parse rss', function () {
     $xml = XmlReader::make(RSS);
 
-    expect($xml->content())->toBeArray();
-    expect($xml->root())->toBe('rss');
+    expect($xml->getContent())->toBeArray();
+    expect($xml->getRoot())->toBe('rss');
 });
 
 it('can parse xml', function () {
     $xml = XmlReader::make(XML);
 
-    expect($xml->content())->toBeArray();
-    expect($xml->root())->toBe('rss');
+    expect($xml->getContent())->toBeArray();
+    expect($xml->getRoot())->toBe('rss');
 });
 
 it('can save xml', function () {
@@ -127,7 +136,7 @@ it('can skip xml error', function () {
     $xml = XmlReader::make(ERROR_XML, failOnError: false);
 
     expect($xml->converter())->toBeNull();
-    expect($xml->content())->toBeArray();
+    expect($xml->getContent())->toBeArray();
 });
 
 it('can fail xml error', function () {
@@ -137,10 +146,10 @@ it('can fail xml error', function () {
 
 it('can read path or content', function () {
     $xml = XmlReader::make(file_get_contents(OPF));
-    expect($xml->content())->toBeArray();
+    expect($xml->getContent())->toBeArray();
 
     $xml = XmlReader::make(OPF);
-    expect($xml->content())->toBeArray();
+    expect($xml->getContent())->toBeArray();
 });
 
 it('can fail if not exists', function () {
