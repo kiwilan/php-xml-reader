@@ -91,7 +91,7 @@ class XmlReader
     }
 
     /**
-     * Get content of entry, if entry has `@content` key, return only the value of `@content` otherwise return the entry.
+     * Parse content of entry, if entry has `@content` key, return only the value of `@content` otherwise return the entry.
      */
     public static function parseContent(mixed $entry): mixed
     {
@@ -107,7 +107,7 @@ class XmlReader
     }
 
     /**
-     * Get attributes of entry, if entry has `@attributes` key.
+     * Parse attributes of entry, if entry has `@attributes` key.
      *
      * @return array<string, mixed>|null
      */

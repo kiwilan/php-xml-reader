@@ -44,15 +44,15 @@ $xml = XmlReader::make('path/to/file.xml', bool $mapContent = true, bool $failOn
 
 |              Method               |               Description                |               Type                |
 | :-------------------------------: | :--------------------------------------: | :-------------------------------: |
-|          `$xml->root()`           |          Value of root element           |             `?string`             |
-|         `$xml->rootNS()`          |        Namespaces of root element        |            `string[]`             |
-|     `$xml->rootAttributes()`      |        Attributes of root element        |      `array<string, mixed>`       |
-|  `$xml->rootAttributes('key');`   | Value of `key` attribute of root element |              `mixed`              |
-|        `$xml->version();`         |               XML version                |             `?string`             |
-|        `$xml->encoding();`        |               XML encoding               |             `?string`             |
+|         `$xml->getRoot()`         |          Value of root element           |             `?string`             |
+|        `$xml->getRootNS()`        |        Namespaces of root element        |            `string[]`             |
+|    `$xml->getRootAttributes()`    |        Attributes of root element        |      `array<string, mixed>`       |
+| `$xml->getRootAttributes('key');` | Value of `key` attribute of root element |              `mixed`              |
+|       `$xml->getVersion();`       |               XML version                |             `?string`             |
+|      `$xml->getEncoding();`       |               XML encoding               |             `?string`             |
 |       `$xml->isValidXml();`       |          Check if XML is valid           |              `bool`               |
-|          `$xml->path();`          |             Path of XML file             |             `?string`             |
-|        `$xml->filename();`        |           Filename of XML file           |             `?string`             |
+|        `$xml->getPath();`         |             Path of XML file             |             `?string`             |
+|      `$xml->getFilename();`       |           Filename of XML file           |             `?string`             |
 |       `$xml->converter();`        |  Converter used to convert XML to array  | `\Kiwilan\XmlReader\XmlConverter` |
 | `$xml->save('path/to/file.xml');` |              Save XML file               |              `bool`               |
 |        `$xml->toArray();`         |           Convert XML to array           |      `array<string, mixed>`       |
@@ -60,21 +60,21 @@ $xml = XmlReader::make('path/to/file.xml', bool $mapContent = true, bool $failOn
 
 ### Advanced methods
 
-|             Method              |                       Description                       |               Type               |              Options              |
-| :-----------------------------: | :-----------------------------------------------------: | :------------------------------: | :-------------------------------: |
-|        `$xml->content()`        |              XML as multidimensional array              |      `array<string, mixed>`      |                                   |
-|       `$xml->find('key')`       | Find key will return first value where that contain key |      `array<string, mixed>`      | `strict`, `content`, `attributes` |
-|      `$xml->search('key')`      |     Search will return all values that contain key      |             `mixed`              |                                   |
-|    `$xml->extract(...keys)`     |   Extract `metadata` key, if not found return `null`    |             `mixed`              |                                   |
-|  `XmlReader::getContent(key)`   |                  Get content of entry                   |             `mixed`              |                                   |
-| `XmlReader::getAttributes(key)` |                 Get attributes of entry                 | `array<string, mixed>` or `null` |                                   |
+|              Method               |                       Description                       |               Type               |              Options              |
+| :-------------------------------: | :-----------------------------------------------------: | :------------------------------: | :-------------------------------: |
+|       `$xml->getContent()`        |              XML as multidimensional array              |      `array<string, mixed>`      |                                   |
+|        `$xml->find('key')`        | Find key will return first value where that contain key |      `array<string, mixed>`      | `strict`, `content`, `attributes` |
+|       `$xml->search('key')`       |     Search will return all values that contain key      |             `mixed`              |                                   |
+|     `$xml->extract(...keys)`      |   Extract `metadata` key, if not found return `null`    |             `mixed`              |                                   |
+|  `XmlReader::parseContent(key)`   |                 Parse content of entry                  |             `mixed`              |                                   |
+| `XmlReader::parseAttributes(key)` |                Parse attributes of entry                | `array<string, mixed>` or `null` |                                   |
 
 ### Basic usage
 
 XML as multidimensional array from `root` (safe).
 
 ```php
-$content = $xml->content();
+$content = $xml->getContent();
 ```
 
 Basic usage.
@@ -139,21 +139,21 @@ Extract `dc:title` key and return `@content` (safe)
 
 ```php
 $title = $xml->extract(['metadata', 'dc:title']);
-$title = XmlReader::getContent($title);
+$title = XmlReader::parseContent($title);
 ```
 
 Extract `dc:creator` key and return `@content` (safe)
 
 ```php
 $creator = $xml->extract(['metadata', 'dc:creator']);
-$creator = XmlReader::getContent($creator);
+$creator = XmlReader::parseContent($creator);
 ```
 
 Extract `dc:creator` key and return `@attributes` (safe)
 
 ```php
 $creatorAttributes = $xml->extract(['metadata', 'dc:creator']);
-$creatorAttributes = XmlReader::getAttributes($creatorAttributes);
+$creatorAttributes = XmlReader::parseAttributes($creatorAttributes);
 ```
 
 ## Testing
