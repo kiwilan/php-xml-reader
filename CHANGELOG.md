@@ -2,6 +2,21 @@
 
 All notable changes to `php-xml-reader` will be documented in this file.
 
+## 1.0.0 - 2023-08-08
+
+### BREAKING CHANGES
+
+- All simple getters have now `get` prefix. For example, `getRoot()` instead of `root()`, `getEncoding()` instead of `encoding()`, etc. It concerns all simple getters of `XmlReader`, `XmlConverter` classes.
+- `getContent` method of `XmlReader` class has been renamed to `parseContent`.
+- `getAttributes` method of `XmlReader` class has been renamed to `parseAttributes`.
+
+> Why?
+All these classes have some methods like setters or actions. To be consistent and clear, all simple getters have now `get` prefix.
+
+### Bugfixes
+
+- Remove strong type for `XmlConverter`, some XML can have a different type than `DOMDocument|DOMElement`
+
 ## 0.2.31 - 2023-06-28
 
 - Clean `find()` and `search()` methods
