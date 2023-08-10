@@ -336,7 +336,7 @@ class XmlReader
     /**
      * XML converter.
      */
-    public function converter(): ?XmlConverter
+    public function getConverter(): ?XmlConverter
     {
         return $this->converter;
     }
