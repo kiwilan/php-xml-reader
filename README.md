@@ -53,7 +53,7 @@ $xml = XmlReader::make('path/to/file.xml', bool $mapContent = true, bool $failOn
 |       `$xml->isValidXml();`       |          Check if XML is valid           |              `bool`               |
 |        `$xml->getPath();`         |             Path of XML file             |             `?string`             |
 |      `$xml->getFilename();`       |           Filename of XML file           |             `?string`             |
-|       `$xml->converter();`        |  Converter used to convert XML to array  | `\Kiwilan\XmlReader\XmlConverter` |
+|      `$xml->getConverter();`      |  Converter used to convert XML to array  | `\Kiwilan\XmlReader\XmlConverter` |
 | `$xml->save('path/to/file.xml');` |              Save XML file               |              `bool`               |
 |        `$xml->toArray();`         |           Convert XML to array           |      `array<string, mixed>`       |
 |       `$xml->__toString();`       |          Convert XML to string           |             `string`              |
