@@ -45,7 +45,7 @@ it('can parse opf', function () {
     expect($xml->isValidXml())->toBeTrue();
     expect($xml->getPath())->toBe(OPF);
     expect($xml->getFilename())->toBe('epub.opf');
-    expect($xml->converter())->toBeInstanceOf(XmlConverter::class);
+    expect($xml->getConverter())->toBeInstanceOf(XmlConverter::class);
     expect($xml->toArray())->toBeArray();
     expect($xml->__toString())->toBeString();
 });
@@ -135,7 +135,7 @@ it('can save xml', function () {
 it('can skip xml error', function () {
     $xml = XmlReader::make(ERROR_XML, failOnError: false);
 
-    expect($xml->converter())->toBeNull();
+    expect($xml->getConverter())->toBeNull();
     expect($xml->getContent())->toBeArray();
 });
 
