@@ -35,7 +35,7 @@ it('can parse opf', function () {
     expect($meta)->toBeArray();
     expect($anykey)->toBeNull();
 
-    expect($xml->getContent())->toBeArray();
+    expect($xml->getContents())->toBeArray();
     expect($xml->getRoot())->toBe('package');
     expect($xml->getRootNS())->toBeArray();
     expect($xml->getRootAttributes())->toBeArray();
@@ -113,14 +113,14 @@ it('can find without map content', function () {
 it('can parse rss', function () {
     $xml = XmlReader::make(RSS);
 
-    expect($xml->getContent())->toBeArray();
+    expect($xml->getContents())->toBeArray();
     expect($xml->getRoot())->toBe('rss');
 });
 
 it('can parse xml', function () {
     $xml = XmlReader::make(XML);
 
-    expect($xml->getContent())->toBeArray();
+    expect($xml->getContents())->toBeArray();
     expect($xml->getRoot())->toBe('rss');
 });
 
@@ -136,7 +136,7 @@ it('can skip xml error', function () {
     $xml = XmlReader::make(ERROR_XML, failOnError: false);
 
     expect($xml->getConverter())->toBeNull();
-    expect($xml->getContent())->toBeArray();
+    expect($xml->getContents())->toBeArray();
 });
 
 it('can fail xml error', function () {
@@ -146,10 +146,10 @@ it('can fail xml error', function () {
 
 it('can read path or content', function () {
     $xml = XmlReader::make(file_get_contents(OPF));
-    expect($xml->getContent())->toBeArray();
+    expect($xml->getContents())->toBeArray();
 
     $xml = XmlReader::make(OPF);
-    expect($xml->getContent())->toBeArray();
+    expect($xml->getContents())->toBeArray();
 });
 
 it('can fail if not exists', function () {
@@ -170,4 +170,10 @@ it('can parse feed', function () {
     expect($find)->toBe('2 Heures De Perdues');
     expect($search)->toBeArray();
     expect($search['title'])->toBe('2 Heures De Perdues');
+});
+
+it('can use deprecated methods', function () {
+    $xml = XmlReader::make(FEED);
+
+    expect($xml->getContent())->toBeArray();
 });

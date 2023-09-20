@@ -28,7 +28,7 @@ class XmlReader
     /**
      * @var array<string, mixed>
      */
-    protected array $content = [];
+    protected array $contents = [];
 
     protected ?XmlConverter $converter = null;
 
@@ -128,16 +128,16 @@ class XmlReader
             return;
         }
 
-        $content = $this->converter->getContent();
-        $this->root = $content['@root'] ?? null;
-        $this->rootNS = $content['@rootNS'] ?? null;
-        $this->version = $content['version'] ?? null;
-        $this->encoding = $content['encoding'] ?? null;
+        $contents = $this->converter->getContent();
+        $this->root = $contents['@root'] ?? null;
+        $this->rootNS = $contents['@rootNS'] ?? null;
+        $this->version = $contents['version'] ?? null;
+        $this->encoding = $contents['encoding'] ?? null;
 
-        $this->content = $content[$this->root] ?? [];
-        if (array_key_exists('@attributes', $this->content)) {
-            $this->rootAttributes = $this->content['@attributes'] ?? null;
-            unset($this->content['@attributes']);
+        $this->contents = $contents[$this->root] ?? [];
+        if (array_key_exists('@attributes', $this->contents)) {
+            $this->rootAttributes = $this->contents['@attributes'] ?? null;
+            unset($this->contents['@attributes']);
         }
     }
 
@@ -152,7 +152,7 @@ class XmlReader
             $keys = [$keys];
         }
 
-        $data = $this->content;
+        $data = $this->contents;
         $res = null;
         foreach ($keys as $k => $key) {
             if (array_key_exists($key, $data)) {
@@ -173,7 +173,7 @@ class XmlReader
      */
     public function search(string $key): mixed
     {
-        $result = $this->findValuesBySimilarKey($this->content, $key);
+        $result = $this->findValuesBySimilarKey($this->contents, $key);
 
         return empty($result) ? null : $result;
     }
@@ -188,7 +188,7 @@ class XmlReader
      */
     public function find(string $key, bool $strict = true, bool $content = false, bool $attributes = false): mixed
     {
-        $result = $this->findValuesBySimilarKey($this->content, $key, $strict);
+        $result = $this->findValuesBySimilarKey($this->contents, $key, $strict);
         if (empty($result)) {
             return null;
         }
@@ -303,10 +303,22 @@ class XmlReader
      * Content of XML from root element.
      *
      * @return array<string, mixed>
+     *
+     * @deprecated Use `getContents()` instead.
      */
     public function getContent(): array
     {
-        return $this->content;
+        return $this->contents;
+    }
+
+    /**
+     * Content of XML from root element.
+     *
+     * @return array<string, mixed>
+     */
+    public function getContents(): array
+    {
+        return $this->contents;
     }
 
     /**
