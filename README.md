@@ -62,7 +62,7 @@ $xml = XmlReader::make('path/to/file.xml', bool $mapContent = true, bool $failOn
 
 |              Method               |                       Description                       |               Type               |              Options              |
 | :-------------------------------: | :-----------------------------------------------------: | :------------------------------: | :-------------------------------: |
-|       `$xml->getContent()`        |              XML as multidimensional array              |      `array<string, mixed>`      |                                   |
+|       `$xml->getContents()`       |              XML as multidimensional array              |      `array<string, mixed>`      |                                   |
 |        `$xml->find('key')`        | Find key will return first value where that contain key |      `array<string, mixed>`      | `strict`, `content`, `attributes` |
 |       `$xml->search('key')`       |     Search will return all values that contain key      |             `mixed`              |                                   |
 |     `$xml->extract(...keys)`      |   Extract `metadata` key, if not found return `null`    |             `mixed`              |                                   |
@@ -74,7 +74,7 @@ $xml = XmlReader::make('path/to/file.xml', bool $mapContent = true, bool $failOn
 XML as multidimensional array from `root` (safe).
 
 ```php
-$content = $xml->getContent();
+$content = $xml->getContents();
 ```
 
 Basic usage.
@@ -133,7 +133,7 @@ $subSubKey = $xml->extract(['metadata', 'dc:title']);
 
 ### Get content
 
-If you want to extract only `@content` you could use `getContent()` method, if you want to extract only `@attributes` you could use `getAttributes()` method.
+If you want to extract only `@content` you could use `parseContent()` method, if you want to extract only `@attributes` you could use `parseAttributes()` method.
 
 Extract `dc:title` key and return `@content` (safe)
 

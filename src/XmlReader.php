@@ -368,7 +368,7 @@ class XmlReader
      */
     public function toArray(): array
     {
-        return $this->converter->getContent();
+        return $this->converter->getContents();
     }
 
     /**
