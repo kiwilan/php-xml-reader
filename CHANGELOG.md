@@ -2,6 +2,11 @@
 
 All notable changes to `php-xml-reader` will be documented in this file.
 
+## v1.0.11 - 2023-09-20
+
+- Add `getContents()` to get contents of XML as array
+- Old method `getContent()` is now deprecated
+
 ## 1.0.1 - 2023-08-10
 
 - `XmlReader` `converter` method is now `getConverter`
