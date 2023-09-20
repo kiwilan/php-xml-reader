@@ -128,7 +128,7 @@ class XmlReader
             return;
         }
 
-        $contents = $this->converter->getContent();
+        $contents = $this->converter->getContents();
         $this->root = $contents['@root'] ?? null;
         $this->rootNS = $contents['@rootNS'] ?? null;
         $this->version = $contents['version'] ?? null;

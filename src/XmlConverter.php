@@ -10,7 +10,7 @@ class XmlConverter
     /**
      * @var array<string, mixed>
      */
-    protected array $content = [];
+    protected array $contents = [];
 
     protected function __construct(
         protected string $xml,
@@ -42,12 +42,12 @@ class XmlConverter
         }
 
         $root = $dom->documentElement;
-        $self->content = $self->domToArray($dom);
+        $self->contents = $self->domToArray($dom);
 
-        $self->content['version'] = $dom->xmlVersion;
-        $self->content['encoding'] = $dom->xmlEncoding;
-        $self->content['@root'] = $root->tagName ?? null;
-        $self->content['@rootNS'] = $ns;
+        $self->contents['version'] = $dom->xmlVersion;
+        $self->contents['encoding'] = $dom->xmlEncoding;
+        $self->contents['@root'] = $root->tagName ?? null;
+        $self->contents['@rootNS'] = $ns;
 
         return $self;
     }
@@ -59,10 +59,20 @@ class XmlConverter
 
     /**
      * @return array<string, mixed>
+     *
+     * @deprecated Use getContents() instead
      */
     public function getContent(): array
     {
-        return $this->content;
+        return $this->contents;
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function getContents(): array
+    {
+        return $this->contents;
     }
 
     /**
