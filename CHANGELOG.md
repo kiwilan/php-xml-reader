@@ -2,6 +2,10 @@
 
 All notable changes to `php-xml-reader` will be documented in this file.
 
+## v1.1.0 - 2024-10-03
+
+Add new validator from [https://stackoverflow.com/questions/17191866/how-to-validate-xml-with-php](https://stackoverflow.com/questions/17191866/how-to-validate-xml-with-php), thanks to [Francesco Casula](https://stackoverflow.com/users/828366/francesco-casula)
+
 ## v1.0.11 - 2023-09-20
 
 - Add `getContents()` to get contents of XML as array
