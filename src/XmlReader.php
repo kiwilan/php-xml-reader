@@ -36,13 +36,12 @@ class XmlReader
         protected ?string $path = null,
         protected ?string $filename = null,
         protected bool $validXml = false,
-    ) {
-    }
+    ) {}
 
     /**
-     * @param  string  $xml XML string or path to XML file
-     * @param  bool  $mapContent If a key has only `@content` key, return only the value of `@content`. Default: `true`.
-     * @param  bool  $failOnError Throw exception if XML is invalid. Default: `true`.
+     * @param  string  $xml  XML string or path to XML file
+     * @param  bool  $mapContent  If a key has only `@content` key, return only the value of `@content`. Default: `true`.
+     * @param  bool  $failOnError  Throw exception if XML is invalid. Default: `true`.
      *
      * @throws Exception
      */
@@ -62,19 +61,22 @@ class XmlReader
         }
 
         $validXml = false;
-        try {
-            if (simplexml_load_string($xml)) {
-                $validXml = true;
-            }
-        } catch (\Throwable $th) {
+        $validXml = (new XmlValidator)->isXMLContentValid($xml);
+
+        if (! $validXml) {
+            $msg = 'XML is not valid';
             if ($failOnError) {
-                throw new Exception('XML is not valid', 1, $th);
+                throw new Exception($msg, 1);
             }
 
-            error_log($th->getMessage()."\n".$th->getTraceAsString());
+            error_log($msg);
         }
 
         $self = new self($path, $basename, $validXml);
+
+        if (! $validXml) {
+            return $self;
+        }
 
         try {
             $self->converter = XmlConverter::make($xml, $mapContent);

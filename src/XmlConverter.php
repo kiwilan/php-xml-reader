@@ -15,10 +15,9 @@ class XmlConverter
     protected function __construct(
         protected string $xml,
         protected bool $skipContentOnly = true,
-    ) {
-    }
+    ) {}
 
-    public static function make(string $xml, bool $skipContentOnly = true): self
+    public static function make(string $xml, bool $skipContentOnly = true): ?self
     {
         $self = new self($xml, $skipContentOnly);
 
@@ -38,7 +37,7 @@ class XmlConverter
         libxml_use_internal_errors($previousValue);
 
         if (libxml_get_errors()) {
-            return [];
+            return null;
         }
 
         $root = $dom->documentElement;

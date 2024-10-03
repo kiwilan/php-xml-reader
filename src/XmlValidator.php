@@ -14,7 +14,7 @@ class XmlValidator
      * @param  string  $version  1.0
      * @param  string  $encoding  utf-8
      */
-    public function isXMLFileValid($xmlFilename, $version = '1.0', $encoding = 'utf-8'): bool
+    public function isXMLFileValid(string $xmlFilename, string $version = '1.0', string $encoding = 'utf-8'): bool
     {
         $xmlContent = file_get_contents($xmlFilename);
 
@@ -26,7 +26,7 @@ class XmlValidator
      * @param  string  $version  1.0
      * @param  string  $encoding  utf-8
      */
-    public function isXMLContentValid($xmlContent, $version = '1.0', $encoding = 'utf-8'): bool
+    public function isXMLContentValid(string $xmlContent, string $version = '1.0', string $encoding = 'utf-8'): bool
     {
         if (trim($xmlContent) == '') {
             return false;

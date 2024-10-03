@@ -175,5 +175,5 @@ it('can parse feed', function () {
 it('can use deprecated methods', function () {
     $xml = XmlReader::make(FEED);
 
-    expect($xml->getContent())->toBeArray();
+    expect($xml->getContents())->toBeArray();
 });

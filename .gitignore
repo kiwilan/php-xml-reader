@@ -12,3 +12,4 @@ vendor
 
 tests/test.xml
 .DS_Store
+.phpunit.cache
