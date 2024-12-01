@@ -35,7 +35,7 @@ You can read XML from path or from content.
 -   `failOnError`: `boolean` Throw exception if XML is invalid. Default: `true`.
 
 ```php
-use KiwiLan\XmlReader\XmlReader;
+use Kiwilan\XmlReader\XmlReader;
 
 $xml = XmlReader::make('path/to/file.xml', bool $mapContent = true, bool $failOnError = true);
 ```
@@ -74,13 +74,20 @@ $xml = XmlReader::make('path/to/file.xml', bool $mapContent = true, bool $failOn
 XML as multidimensional array from `root` (safe).
 
 ```php
-$content = $xml->getContents();
+use Kiwilan\XmlReader\XmlReader;
+
+$xml = XmlReader::make('path/to/file.xml');
+$contents = $xml->getContents();
 ```
 
 Basic usage.
 
 ```php
-$title = $content['metadata']['dc:title'] ?? null;
+use Kiwilan\XmlReader\XmlReader;
+
+$xml = XmlReader::make('path/to/file.xml');
+$contents = $xml->getContents();
+$title = $contents['metadata']['dc:title'] ?? null;
 ```
 
 ### Find
@@ -88,24 +95,36 @@ $title = $content['metadata']['dc:title'] ?? null;
 Find key will return first value where key that contain `title` (safe).
 
 ```php
+use Kiwilan\XmlReader\XmlReader;
+
+$xml = XmlReader::make('path/to/file.xml');
 $title = $xml->find('title', strict: false);
 ```
 
 Find key will return first value where key is `dc:title` (safe)
 
 ```php
+use Kiwilan\XmlReader\XmlReader;
+
+$xml = XmlReader::make('path/to/file.xml');
 $dcTitle = $xml->find('dc:title');
 ```
 
 Find key will return first value where key that contain `dc:title` and return `@content` (safe)
 
 ```php
+use Kiwilan\XmlReader\XmlReader;
+
+$xml = XmlReader::make('path/to/file.xml');
 $dcCreator = $xml->find('dc:creator', content: true);
 ```
 
 Find key will return first value where key contain `dc:creator` and return `@attributes` (safe)
 
 ```php
+use Kiwilan\XmlReader\XmlReader;
+
+$xml = XmlReader::make('path/to/file.xml');
 $dcCreator = $xml->find('dc:creator', attributes: true);
 ```
 
@@ -114,6 +133,9 @@ $dcCreator = $xml->find('dc:creator', attributes: true);
 Search will return all values that contain `dc` (safe)
 
 ```php
+use Kiwilan\XmlReader\XmlReader;
+
+$xml = XmlReader::make('path/to/file.xml');
 $dc = $xml->search('dc');
 ```
 
@@ -122,12 +144,18 @@ $dc = $xml->search('dc');
 Extract `metadata` key, if not found return null (safe)
 
 ```php
+use Kiwilan\XmlReader\XmlReader;
+
+$xml = XmlReader::make('path/to/file.xml');
 $rootKey = $xml->extract('metadata');
 ```
 
 Extract `metadata` and `dc:title` keys (safe)
 
 ```php
+use Kiwilan\XmlReader\XmlReader;
+
+$xml = XmlReader::make('path/to/file.xml');
 $subSubKey = $xml->extract(['metadata', 'dc:title']);
 ```
 
@@ -138,6 +166,9 @@ If you want to extract only `@content` you could use `parseContent()` method, if
 Extract `dc:title` key and return `@content` (safe)
 
 ```php
+use Kiwilan\XmlReader\XmlReader;
+
+$xml = XmlReader::make('path/to/file.xml');
 $title = $xml->extract(['metadata', 'dc:title']);
 $title = XmlReader::parseContent($title);
 ```
@@ -145,6 +176,9 @@ $title = XmlReader::parseContent($title);
 Extract `dc:creator` key and return `@content` (safe)
 
 ```php
+use Kiwilan\XmlReader\XmlReader;
+
+$xml = XmlReader::make('path/to/file.xml');
 $creator = $xml->extract(['metadata', 'dc:creator']);
 $creator = XmlReader::parseContent($creator);
 ```
@@ -152,6 +186,9 @@ $creator = XmlReader::parseContent($creator);
 Extract `dc:creator` key and return `@attributes` (safe)
 
 ```php
+use Kiwilan\XmlReader\XmlReader;
+
+$xml = XmlReader::make('path/to/file.xml');
 $creatorAttributes = $xml->extract(['metadata', 'dc:creator']);
 $creatorAttributes = XmlReader::parseAttributes($creatorAttributes);
 ```
